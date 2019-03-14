@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.matej.sepka.bestappever.database.AppDatabase;
 import com.matej.sepka.bestappever.database.Group;
 import com.matej.sepka.bestappever.R;
+import com.matej.sepka.bestappever.database.Player;
 import com.matej.sepka.bestappever.dialog.DeleteGroupDialog;
 
 import java.util.List;
@@ -20,8 +21,6 @@ import java.util.List;
 public class GroupDetailActivity extends AppCompatActivity {
 
     private Group group;
-    private String player;
-    private List players;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,15 +36,20 @@ public class GroupDetailActivity extends AppCompatActivity {
         addPlayerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                player = addPlayer.getText().toString();
-                players.add(group.getPlayers());
-                players.add(player);
-                group.setPlayers(players);
+                Player player = new Player();
+                String groupName;
+                groupName = group.getName();
+                player.setName(addPlayer.getText().toString());
+                player.setGroup(groupName);
 
                 AppDatabase appDatabase = AppDatabase.getInstance(getApplication());
-                appDatabase.getGroupDao().update(group);
+                appDatabase.getPlayerDao().insert(player);
             }
         });
+
+        //TODO Zobrazení hráčů v tabulce (pro začítek v seznamu) / Nalézt všechny hráče v databzim kteří mají správný GroupName
+        //TODO Vymazání hráče z databáze
+
     }
 
     @Override

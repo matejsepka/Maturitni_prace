@@ -12,7 +12,6 @@ public class Group implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private long id;
     private String name;
-    private List players;
 
     public long getId() {
         return id;
@@ -28,13 +27,5 @@ public class Group implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<String> getPlayers() {
-        return players;
-    }
-
-    public void setPlayers(List<String> players) {
-        this.players = players;
     }
 }
