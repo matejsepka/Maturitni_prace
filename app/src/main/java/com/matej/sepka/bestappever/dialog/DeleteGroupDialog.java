@@ -48,7 +48,7 @@ public class DeleteGroupDialog extends AppCompatDialogFragment {
                                 appDatabase.getPlayerDao().delete(player);
                             }
                         }
-                        
+
                         appDatabase.getGroupDao().delete(group);
                         getActivity().finish();
                         dismiss();
