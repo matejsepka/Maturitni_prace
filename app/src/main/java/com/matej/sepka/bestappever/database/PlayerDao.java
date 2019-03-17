@@ -6,13 +6,12 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
-import androidx.room.Update;
 
 @Dao
 public interface PlayerDao {
 
-    @Query("SELECT * FROM `group`")
-    List<Player> getAll();
+    @Query("SELECT * FROM Player")
+    List<Player> getall();
 
     @Insert
     void insert(Player player);

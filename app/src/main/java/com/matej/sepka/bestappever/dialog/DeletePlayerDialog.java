@@ -2,30 +2,42 @@ package com.matej.sepka.bestappever.dialog;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.matej.sepka.bestappever.R;
 import com.matej.sepka.bestappever.database.AppDatabase;
-import com.matej.sepka.bestappever.database.Group;
 import com.matej.sepka.bestappever.database.Player;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-public class DeleteGroupDialog extends AppCompatDialogFragment {
+public class DeletePlayerDialog extends AppCompatDialogFragment {
+    private PlayerDialogListener listener;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        try {
+            listener = (PlayerDialogListener) context;
+        } catch (ClassCastException e) {
+            e.printStackTrace();
+        }
+    }
 
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        final Group group = (Group) getArguments().getSerializable("group");
+        final Player player = (Player) getArguments().getSerializable("player");
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        View view = View.inflate(getContext(), R.layout.dialog_delete_group, null);
+        View view = View.inflate(getContext(), R.layout.dialog_delete_player, null);
+        TextView playerNameText = view.findViewById(R.id.text_delete_player);
+        playerNameText.setText(player.getName());
 
         builder.setView(view)
                 .setNegativeButton("zrušit", new DialogInterface.OnClickListener() {
@@ -38,23 +50,11 @@ public class DeleteGroupDialog extends AppCompatDialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         AppDatabase appDatabase = AppDatabase.getInstance(getActivity().getApplication());
-                        List<Player> AllPlayersList = appDatabase.getPlayerDao().getall();
-
-                        for (int i = 0; i < AllPlayersList.size(); i++) {
-                            Player player = AllPlayersList.get(i);
-                            String string1 = player.getGroup();
-                            String string2 = group.getName();
-                            if (string1.equals(string2)) {
-                                appDatabase.getPlayerDao().delete(player);
-                            }
-                        }
-                        
-                        appDatabase.getGroupDao().delete(group);
-                        getActivity().finish();
+                        appDatabase.getPlayerDao().delete(player);
+                        listener.deletePlayer(player);
                         dismiss();
                     }
                 });
         return builder.create();
     }
-
 }

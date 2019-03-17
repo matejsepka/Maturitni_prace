@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@android:color/white">
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Následující hráč bude odstraněn ze skupiny:"
+        android:textColor="@color/colorPrimaryDark"
+        android:textColorLink="@color/colorPrimaryDark"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/text_delete_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_below="@+id/textView9"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_below="@+id/text_delete_player"
+        android:textColor="@color/colorPrimaryDark"
+        android:text="Opravdu si přejete v akci pokračovat?"
+        android:layout_margin="10dp"/>
+</RelativeLayout>

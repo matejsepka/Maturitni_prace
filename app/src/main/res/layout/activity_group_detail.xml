@@ -10,29 +10,13 @@
         android:layout_height="wrap_content"
         android:textColor="@color/colorTextPrimary"
         android:layout_centerHorizontal="true"
-        android:textSize="30dp"
-        android:textStyle="bold" />
+        android:textSize="35sp"
+        android:textStyle="italic" />
 
-    <EditText
-        android:id="@+id/add_player_editText"
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/player_recycler_view"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Jméno hráče"
-        android:singleLine="true"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/text_group_name"
-        android:layout_marginTop="10dp"
-        />
-
-    <Button
-        android:id="@+id/add_player_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Uložit"
-        android:textAllCaps="false"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/add_player_editText"
-        android:layout_margin="10dp"
-        android:background="@drawable/rounded_button"/>
+        android:layout_below="@id/text_group_name"/>
 
 </RelativeLayout>
