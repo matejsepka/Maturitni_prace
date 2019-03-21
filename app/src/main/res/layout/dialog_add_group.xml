@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
@@ -11,25 +10,90 @@
         android:id="@+id/text_dialog_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="Přidat skupinu"/>
+        android:text="Přidat skupinu"
+        android:textSize="20sp"/>
 
     <EditText
         android:id="@+id/edit_group_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Název skupiny"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_dialog_title" />
+        android:textSize="25sp"
+        android:layout_below="@id/text_dialog_title"/>
+
+    <TextView
+        android:id="@+id/text_9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vyberte dny tréninků dané skupiny"
+        android:textSize="20sp"
+        android:layout_below="@id/edit_group_name"/>
+
+    <Switch
+        android:id="@+id/monday_switch"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Pondělí"
+        android:layout_below="@id/text_9"/>
+
+    <Switch
+        android:id="@+id/tuesday_switch"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Úterý"
+        android:layout_below="@id/monday_switch"/>
+
+    <Switch
+        android:id="@+id/wednesday_switch"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Středa"
+        android:layout_below="@id/tuesday_switch"/>
+
+    <Switch
+        android:id="@+id/thursday_switch"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Čtvrtek"
+        android:layout_below="@id/wednesday_switch"/>
+
+    <Switch
+        android:id="@+id/friday_switch"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_9"
+        android:layout_alignParentRight="true"
+        android:text="Pátek"
+        android:textSize="20sp" />
+
+    <Switch
+        android:id="@+id/saturday_switch"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/friday_switch"
+        android:layout_alignParentRight="true"
+        android:text="Sobota"
+        android:textSize="20sp" />
+
+    <Switch
+        android:id="@+id/sunday_switch"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/saturday_switch"
+        android:layout_alignParentRight="true"
+        android:text="Neděle"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/button_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Uložit"
-        app:layout_constraintTop_toBottomOf="@id/edit_group_name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/thursday_switch"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

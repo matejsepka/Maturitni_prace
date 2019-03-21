@@ -9,14 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.AttendanceActivity"></activity>
         <activity
             android:name=".activity.GameSituationDetailActivity"
-            android:parentActivityName=".activity.MainActivity"
-            android:label="Cvičení"/>
+            android:label="Cvičení"
+            android:parentActivityName=".activity.MainActivity" />
         <activity
             android:name=".activity.GroupDetailActivity"
-            android:parentActivityName=".activity.MainActivity"
-            android:label="Trénink" />
+            android:label="Trénink"
+            android:parentActivityName=".activity.MainActivity" />
         <activity
             android:name=".activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />

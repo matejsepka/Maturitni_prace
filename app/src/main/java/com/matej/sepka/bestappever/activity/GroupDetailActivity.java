@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.matej.sepka.bestappever.database.AppDatabase;
@@ -40,6 +42,7 @@ public class GroupDetailActivity extends AppCompatActivity implements PlayerDial
         group = (Group) getIntent().getExtras().getSerializable("group");
         TextView textGroupName = findViewById(R.id.text_group_name);
         textGroupName.setText(group.getName());
+        Button attendanceBtn = findViewById(R.id.attendance_btn);
         RecyclerView recyclerView = findViewById(R.id.player_recycler_view);
         AppDatabase appDatabase = AppDatabase.getInstance(getApplication());
 
@@ -61,6 +64,19 @@ public class GroupDetailActivity extends AppCompatActivity implements PlayerDial
         playersAdapter = new PlayersAdapter(listPlayers);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(playersAdapter);
+
+        //Otevření stránky s docházkou
+
+        attendanceBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AttendanceActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("group", group);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
     }
 
     //Implementace Menu
