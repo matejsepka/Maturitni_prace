@@ -8,14 +8,14 @@ import androidx.room.Insert;
 import androidx.room.Query;
 
 @Dao
-public interface DateOfTrainingDao {
+public interface TrainingDao {
 
-    @Query("SELECT * FROM dateOfTraining")
-    List<DateOfTraining> getAll();
+    @Query("SELECT * FROM training")
+    List<Training> getall();
 
     @Insert
-    void insert(DateOfTraining dateOfTraining);
+    void insert(Training training);
 
     @Delete
-    void delete(DateOfTraining dateOfTraining);
+    void delete(Training training);
 }

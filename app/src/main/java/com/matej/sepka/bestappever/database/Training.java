@@ -6,10 +6,10 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class DateOfTraining implements Serializable {
+public class Training implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private long id;
-    private String group;
+    private String groupName;
     private long millis;
 
     public long getId() {
@@ -20,12 +20,12 @@ public class DateOfTraining implements Serializable {
         this.id = id;
     }
 
-    public String getGroup() {
-        return group;
+    public String getGroupName() {
+        return groupName;
     }
 
-    public void setGroup(String group) {
-        this.group = group;
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
     }
 
     public long getMillis() {

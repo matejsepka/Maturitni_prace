@@ -6,11 +6,12 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Group.class, GameSituation.class, Player.class, DateOfTraining.class}, version = 3, exportSchema = false)
+@Database(entities = {Group.class, GameSituation.class, Player.class, Training.class}, version = 3, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     public static AppDatabase getInstance(Application application) {
         return Room.databaseBuilder(application, AppDatabase.class, "app_database")
+                .fallbackToDestructiveMigration()
                 .allowMainThreadQueries()
                 .build();
     }
@@ -18,5 +19,5 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract GroupDao getGroupDao();
     public abstract GameSituationDao getGameSituationDao();
     public abstract PlayerDao getPlayerDao();
-    public abstract DateOfTrainingDao getDateOfTriningDao();
+    public abstract TrainingDao getTrainingDao();
 }

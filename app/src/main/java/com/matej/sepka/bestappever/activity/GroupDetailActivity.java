@@ -52,9 +52,7 @@ public class GroupDetailActivity extends AppCompatActivity implements PlayerDial
         List<Player> listPlayers = new ArrayList<>();
         for (int i = 0; i < AllPlayersList.size(); i++) {
             Player player = AllPlayersList.get(i);
-            String string1 = player.getGroup();
-            String string2 = group.getName();
-            if (string1.equals(string2)) {
+            if (player.getGroup().equals(group.getName())) {
                 listPlayers.add(player);
             }
         }

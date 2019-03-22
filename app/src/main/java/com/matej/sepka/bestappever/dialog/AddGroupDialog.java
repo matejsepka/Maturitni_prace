@@ -8,26 +8,23 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-import com.matej.sepka.bestappever.database.DateOfTraining;
+import com.matej.sepka.bestappever.activity.MainActivity;
 import com.matej.sepka.bestappever.database.Group;
 import com.matej.sepka.bestappever.R;
 import com.matej.sepka.bestappever.database.AppDatabase;
+import com.matej.sepka.bestappever.database.Training;
 
-import java.time.Year;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import static java.util.Calendar.YEAR;
-
 public class AddGroupDialog extends BottomSheetDialogFragment {
     private AddDialogListener listener;
-    private final long millisInDay = 86400000;
+    private final long secondsInDay = 86400;
     private EditText editGroupName;
 
     @Override
@@ -53,17 +50,19 @@ public class AddGroupDialog extends BottomSheetDialogFragment {
         Button buttonSave = view.findViewById(R.id.button_save);
 
         final Switch mondaySwitch = view.findViewById(R.id.monday_switch);
-        Switch tuesdaySwitch = view.findViewById(R.id.tuesday_switch);
-        Switch wednesdaySwitch = view.findViewById(R.id.wednesday_switch);
-        Switch thursdaySwitch = view.findViewById(R.id.thursday_switch);
-        Switch fridaySwitch = view.findViewById(R.id.friday_switch);
-        Switch saturdaySwitch = view.findViewById(R.id.saturday_switch);
-        Switch sundaySwitch = view.findViewById(R.id.sunday_switch);
+        final Switch tuesdaySwitch = view.findViewById(R.id.tuesday_switch);
+        final Switch wednesdaySwitch = view.findViewById(R.id.wednesday_switch);
+        final Switch thursdaySwitch = view.findViewById(R.id.thursday_switch);
+        final Switch fridaySwitch = view.findViewById(R.id.friday_switch);
+        final Switch saturdaySwitch = view.findViewById(R.id.saturday_switch);
+        final Switch sundaySwitch = view.findViewById(R.id.sunday_switch);
 
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 //Vložení skupiny
+
                 Group group = new Group();
                 group.setName(editGroupName.getText().toString());
 
@@ -78,31 +77,128 @@ public class AddGroupDialog extends BottomSheetDialogFragment {
                 today.setHours(0);
                 today.setMinutes(0);
                 today.setSeconds(0);
-                long todayMillis = (today.getTime() / 1000) * 1000;
-                long futureMillis = todayMillis + (31536000);
-                long todayDays = todayMillis / millisInDay;
+                long todaySeconds = today.getTime() / 1000;
+                long inOneYearSeconds = todaySeconds + (31536000);
+                long todayDays = (todaySeconds + 3600) / secondsInDay;
 
                 if (mondaySwitch.isChecked()) {
-                    long helper1 = todayMillis;
-                    long helper2 = futureMillis;
-                    long helper3 = todayDays;
+                    long helper = todaySeconds;
 
-                    for (long i = helper3; i % 6 != 0; i = i + millisInDay) {
-                        helper1 = helper1 + millisInDay;
+                    for (long i = todayDays; 4 != i%7; i = i + secondsInDay) {
+                        helper = helper + secondsInDay;
                     }
 
-                    while (helper1 < helper2) {
-                        DateOfTraining dateOfTraining = new DateOfTraining();
-                        dateOfTraining.setGroup(group.getName());
-                        dateOfTraining.setMillis(helper1);
+                    while (helper < inOneYearSeconds) {
+                        Training training = new Training();
+                        training.setGroupName(group.getName());
+                        training.setMillis(helper);
 
-                        appDatabase.getDateOfTriningDao().insert(dateOfTraining);
-                        helper1 = helper1 + (7 * millisInDay);
+                        appDatabase.getTrainingDao().insert(training);
+                        helper = helper + (7 * secondsInDay);
                     }
-
                 }
 
+                if (tuesdaySwitch.isChecked()) {
+                    long helper = todaySeconds;
 
+                    for (long i = todayDays; 5 != i%7; i = i + secondsInDay) {
+                        helper = helper + secondsInDay;
+                    }
+
+                    while (helper < inOneYearSeconds) {
+                        Training training = new Training();
+                        training.setGroupName(group.getName());
+                        training.setMillis(helper);
+
+                        appDatabase.getTrainingDao().insert(training);
+                        helper = helper + (7 * secondsInDay);
+                    }
+                }
+
+                if (wednesdaySwitch.isChecked()) {
+                    long helper = todaySeconds;
+
+                    for (long i = todayDays; 6 != i%7; i = i + secondsInDay) {
+                        helper = helper + secondsInDay;
+                    }
+
+                    while (helper < inOneYearSeconds) {
+                        Training training = new Training();
+                        training.setGroupName(group.getName());
+                        training.setMillis(helper);
+
+                        appDatabase.getTrainingDao().insert(training);
+                        helper = helper + (7 * secondsInDay);
+                    }
+                }
+
+                if (thursdaySwitch.isChecked()) {
+                    long helper = todaySeconds;
+
+                    for (long i = todayDays; 0 != i%7; i = i + secondsInDay) {
+                        helper = helper + secondsInDay;
+                    }
+
+                    while (helper < inOneYearSeconds) {
+                        Training training = new Training();
+                        training.setGroupName(group.getName());
+                        training.setMillis(helper);
+
+                        appDatabase.getTrainingDao().insert(training);
+                        helper = helper + (7 * secondsInDay);
+                    }
+                }
+
+                if (fridaySwitch.isChecked()) {
+                    long helper = todaySeconds;
+
+                    for (long i = todayDays; 1 != i%7; i = i + secondsInDay) {
+                        helper = helper + secondsInDay;
+                    }
+
+                    while (helper < inOneYearSeconds) {
+                        Training training = new Training();
+                        training.setGroupName(group.getName());
+                        training.setMillis(helper);
+
+                        appDatabase.getTrainingDao().insert(training);
+                        helper = helper + (7 * secondsInDay);
+                    }
+                }
+
+                if (saturdaySwitch.isChecked()) {
+                    long helper = todaySeconds;
+
+                    for (long i = todayDays; 2 != i%7; i = i + secondsInDay) {
+                        helper = helper + secondsInDay;
+                    }
+
+                    while (helper < inOneYearSeconds) {
+                        Training training = new Training();
+                        training.setGroupName(group.getName());
+                        training.setMillis(helper);
+
+                        appDatabase.getTrainingDao().insert(training);
+                        helper = helper + (7 * secondsInDay);
+                    }
+                }
+
+                if (sundaySwitch.isChecked()) {
+                    long helper = todaySeconds;
+
+                    for (long i = todayDays; 3 != i%7; i = i + secondsInDay) {
+                        helper = helper + secondsInDay;
+                    }
+
+                    while (helper < inOneYearSeconds) {
+                        Training training = new Training();
+                        training.setGroupName(group.getName());
+                        training.setMillis(helper);
+
+                        appDatabase.getTrainingDao().insert(training);
+                        helper = helper + (7 * secondsInDay);
+                    }
+                }
                 dismiss();
             }
         });

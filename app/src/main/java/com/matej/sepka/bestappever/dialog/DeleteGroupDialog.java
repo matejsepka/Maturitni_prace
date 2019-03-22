@@ -10,6 +10,7 @@ import com.matej.sepka.bestappever.R;
 import com.matej.sepka.bestappever.database.AppDatabase;
 import com.matej.sepka.bestappever.database.Group;
 import com.matej.sepka.bestappever.database.Player;
+import com.matej.sepka.bestappever.database.Training;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,13 +40,19 @@ public class DeleteGroupDialog extends AppCompatDialogFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         AppDatabase appDatabase = AppDatabase.getInstance(getActivity().getApplication());
                         List<Player> AllPlayersList = appDatabase.getPlayerDao().getall();
+                        List<Training> AllTrainingsList = appDatabase.getTrainingDao().getall();
 
                         for (int i = 0; i < AllPlayersList.size(); i++) {
                             Player player = AllPlayersList.get(i);
-                            String string1 = player.getGroup();
-                            String string2 = group.getName();
-                            if (string1.equals(string2)) {
+                            if (player.getGroup().equals(group.getName())) {
                                 appDatabase.getPlayerDao().delete(player);
+                            }
+                        }
+
+                        for (int i = 0; i < AllTrainingsList.size(); i++) {
+                            Training training = AllTrainingsList.get(i);
+                            if (training.getGroupName().equals(group.getName())) {
+                                appDatabase.getTrainingDao().delete(training);
                             }
                         }
 
