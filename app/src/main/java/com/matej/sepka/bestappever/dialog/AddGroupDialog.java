@@ -81,10 +81,12 @@ public class AddGroupDialog extends BottomSheetDialogFragment {
                 long inOneYearSeconds = todaySeconds + (31536000);
                 long todayDays = (todaySeconds + 3600) / secondsInDay;
 
+                
+
                 if (mondaySwitch.isChecked()) {
                     long helper = todaySeconds;
 
-                    for (long i = todayDays; 4 != i%7; i = i + secondsInDay) {
+                    for (long i = todayDays; i % 7 != 4; i++) {
                         helper = helper + secondsInDay;
                     }
 
@@ -101,7 +103,7 @@ public class AddGroupDialog extends BottomSheetDialogFragment {
                 if (tuesdaySwitch.isChecked()) {
                     long helper = todaySeconds;
 
-                    for (long i = todayDays; 5 != i%7; i = i + secondsInDay) {
+                    for (long i = todayDays; i % 7 != 5; i++) {
                         helper = helper + secondsInDay;
                     }
 
@@ -118,7 +120,7 @@ public class AddGroupDialog extends BottomSheetDialogFragment {
                 if (wednesdaySwitch.isChecked()) {
                     long helper = todaySeconds;
 
-                    for (long i = todayDays; 6 != i%7; i = i + secondsInDay) {
+                    for (long i = todayDays; i % 7 != 6; i++) {
                         helper = helper + secondsInDay;
                     }
 
@@ -135,7 +137,7 @@ public class AddGroupDialog extends BottomSheetDialogFragment {
                 if (thursdaySwitch.isChecked()) {
                     long helper = todaySeconds;
 
-                    for (long i = todayDays; 0 != i%7; i = i + secondsInDay) {
+                    for (long i = todayDays; i % 7 != 0; i++) {
                         helper = helper + secondsInDay;
                     }
 
@@ -152,7 +154,7 @@ public class AddGroupDialog extends BottomSheetDialogFragment {
                 if (fridaySwitch.isChecked()) {
                     long helper = todaySeconds;
 
-                    for (long i = todayDays; 1 != i%7; i = i + secondsInDay) {
+                    for (long i = todayDays; i % 7 != 1; i++) {
                         helper = helper + secondsInDay;
                     }
 
@@ -169,7 +171,7 @@ public class AddGroupDialog extends BottomSheetDialogFragment {
                 if (saturdaySwitch.isChecked()) {
                     long helper = todaySeconds;
 
-                    for (long i = todayDays; 2 != i%7; i = i + secondsInDay) {
+                    for (long i = todayDays; i % 7 != 2; i++) {
                         helper = helper + secondsInDay;
                     }
 
@@ -186,7 +188,7 @@ public class AddGroupDialog extends BottomSheetDialogFragment {
                 if (sundaySwitch.isChecked()) {
                     long helper = todaySeconds;
 
-                    for (long i = todayDays; 3 != i%7; i = i + secondsInDay) {
+                    for (long i = todayDays; i % 7 != 3; i++) {
                         helper = helper + secondsInDay;
                     }
 

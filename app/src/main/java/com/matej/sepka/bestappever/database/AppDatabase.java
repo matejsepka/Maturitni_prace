@@ -6,7 +6,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Group.class, GameSituation.class, Player.class, Training.class}, version = 3, exportSchema = false)
+@Database(entities = {Group.class, GameSituation.class, Player.class, Training.class, Attendance.class}, version = 5, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     public static AppDatabase getInstance(Application application) {
@@ -20,4 +20,5 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract GameSituationDao getGameSituationDao();
     public abstract PlayerDao getPlayerDao();
     public abstract TrainingDao getTrainingDao();
+    public abstract AttendanceDao getAttendanceDao();
 }

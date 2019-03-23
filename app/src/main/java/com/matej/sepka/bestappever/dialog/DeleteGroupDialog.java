@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.matej.sepka.bestappever.R;
 import com.matej.sepka.bestappever.database.AppDatabase;
+import com.matej.sepka.bestappever.database.Attendance;
 import com.matej.sepka.bestappever.database.Group;
 import com.matej.sepka.bestappever.database.Player;
 import com.matej.sepka.bestappever.database.Training;
@@ -41,6 +42,7 @@ public class DeleteGroupDialog extends AppCompatDialogFragment {
                         AppDatabase appDatabase = AppDatabase.getInstance(getActivity().getApplication());
                         List<Player> AllPlayersList = appDatabase.getPlayerDao().getall();
                         List<Training> AllTrainingsList = appDatabase.getTrainingDao().getall();
+                        List<Attendance> AllAttendanceList = appDatabase.getAttendanceDao().getAll();
 
                         for (int i = 0; i < AllPlayersList.size(); i++) {
                             Player player = AllPlayersList.get(i);
@@ -53,6 +55,13 @@ public class DeleteGroupDialog extends AppCompatDialogFragment {
                             Training training = AllTrainingsList.get(i);
                             if (training.getGroupName().equals(group.getName())) {
                                 appDatabase.getTrainingDao().delete(training);
+                            }
+                        }
+
+                        for (int i = 0; i < AllAttendanceList.size(); i++) {
+                            Attendance attendance = AllAttendanceList.get(i);
+                            if (attendance.getGroupName().equals(group.getName())) {
+                                appDatabase.getAttendanceDao().delete(attendance);
                             }
                         }
 

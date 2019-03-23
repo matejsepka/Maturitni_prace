@@ -1,6 +1,7 @@
 package com.matej.sepka.bestappever.database;
 
 import java.io.Serializable;
+import java.util.Comparator;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -35,4 +36,14 @@ public class Training implements Serializable {
     public void setMillis(long millis) {
         this.millis = millis;
     }
+
+    public static Comparator<Training> TraMilComparator = new Comparator<Training>() {
+        @Override
+        public int compare(Training o1, Training o2) {
+            int TrainingMillis1 = (int) o1.getMillis();
+            int TrainingMillis2 = (int) o2.getMillis();
+
+            return TrainingMillis1-TrainingMillis2;
+        }
+    };
 }

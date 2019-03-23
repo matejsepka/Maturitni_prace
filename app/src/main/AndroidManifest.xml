@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.AttendanceActivity"></activity>
+        <activity android:name=".activity.AttendanceDetailActivity"></activity>
+        <activity android:name=".activity.AttendanceActivity" />
         <activity
             android:name=".activity.GameSituationDetailActivity"
             android:label="Cvičení"

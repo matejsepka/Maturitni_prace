@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,14 +15,13 @@ import android.widget.TextView;
 import com.matej.sepka.bestappever.R;
 import com.matej.sepka.bestappever.database.AppDatabase;
 import com.matej.sepka.bestappever.database.Group;
-import com.matej.sepka.bestappever.database.Player;
 import com.matej.sepka.bestappever.database.Training;
-import com.matej.sepka.bestappever.dialog.DeletePlayerDialog;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 public class AttendanceActivity extends AppCompatActivity {
@@ -43,21 +43,18 @@ public class AttendanceActivity extends AppCompatActivity {
         List<Training> listTrainings = new ArrayList<>();
         for (int i = 0; i < AllTrainingsList.size(); i++) {
             Training training = AllTrainingsList.get(i);
-            String string1 = training.getGroupName();
-            String string2 = group.getName();
-            if (string1.equals(string2)) {
+            if (training.getGroupName().equals(group.getName())) {
                 listTrainings.add(training);
             }
         }
 
-        //TODO Seznam listTrainings je třeba seřadit
+        Collections.sort(listTrainings, Training.TraMilComparator);
 
         //Spuštění adaptéru pro vyplnění ryclerview
 
         trainingsAdapter = new TrainingsAdapter(listTrainings);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(trainingsAdapter);
-
     }
 
     private class TrainingsAdapter extends RecyclerView.Adapter<TrainingsAdapter.TrainingsViewHolder> {
@@ -82,17 +79,18 @@ public class AttendanceActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull TrainingsViewHolder holder, int position) {
             final Training training = listTrainings.get(position);
-            String textname = Long.toString(training.getMillis());
-            holder.textName.setText(textname);
-
-            //TODO neměli by se tisknout sekundy ale celé datum (ideálně i s příslušným denem v týdnu)
-
+            Date date = new Date();
+            date.setTime(training.getMillis() * 1000);
+            SimpleDateFormat sdf = new SimpleDateFormat("E dd. MMM yyyy");
+            holder.textName.setText(sdf.format(date));
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-                    //TODO za každým datem bude ještě jedna stránka s hráči překliknutelnými na přítomen / nepřítomen
-
+                    Intent intent = new Intent(getApplicationContext(), AttendanceDetailActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("training", training);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
                 }
             });
         }

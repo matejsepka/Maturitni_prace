@@ -7,6 +7,8 @@
     <color name="colorTextPrimary">#FFFFFF</color>
     <color name="colorTextSecondary">#B2FFFFFF</color>
     <color name="colorCard">#303030</color>
+    <color name="colorPresent">#00e600</color>
+    <color name="colorNotPresent">#ff5c33</color>
 
     <color name="LightGrey">#232222</color>
     <color name="DarkGrey">#5e5e5e</color>

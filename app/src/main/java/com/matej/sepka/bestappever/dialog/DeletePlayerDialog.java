@@ -10,7 +10,11 @@ import android.widget.TextView;
 
 import com.matej.sepka.bestappever.R;
 import com.matej.sepka.bestappever.database.AppDatabase;
+import com.matej.sepka.bestappever.database.Attendance;
 import com.matej.sepka.bestappever.database.Player;
+import com.matej.sepka.bestappever.database.Training;
+
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDialogFragment;
@@ -51,6 +55,15 @@ public class DeletePlayerDialog extends AppCompatDialogFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         AppDatabase appDatabase = AppDatabase.getInstance(getActivity().getApplication());
                         appDatabase.getPlayerDao().delete(player);
+
+                        List<Attendance> AllAttendanceList = appDatabase.getAttendanceDao().getAll();
+                        for (int i = 0; i < AllAttendanceList.size(); i++) {
+                            Attendance attendance = AllAttendanceList.get(i);
+                            if ((attendance.getGroupName().equals(player.getGroup())) && (attendance.getPlayerName().equals(player.getName()))) {
+                                appDatabase.getAttendanceDao().delete(attendance);
+                            }
+                        }
+
                         listener.deletePlayer(player);
                         dismiss();
                     }

@@ -11,8 +11,13 @@ import android.widget.EditText;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.matej.sepka.bestappever.R;
 import com.matej.sepka.bestappever.database.AppDatabase;
+import com.matej.sepka.bestappever.database.Attendance;
 import com.matej.sepka.bestappever.database.Group;
 import com.matej.sepka.bestappever.database.Player;
+import com.matej.sepka.bestappever.database.Training;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -55,6 +60,18 @@ public class AddPlayerDialog extends BottomSheetDialogFragment {
 
                 AppDatabase appDatabase = AppDatabase.getInstance(getActivity().getApplication());
                 appDatabase.getPlayerDao().insert(player);
+
+                List<Training> AllTrainingsList = appDatabase.getTrainingDao().getall();
+                for (int i = 0; i < AllTrainingsList.size(); i++) {
+                    Training training = AllTrainingsList.get(i);
+                    if (training.getGroupName().equals(group.getName())) {
+                        Attendance attendance = new Attendance();
+                        attendance.setGroupName(group.getName());
+                        attendance.setPlayerName(player.getName());
+                        attendance.setTrainingSeconds(training.getMillis());
+                        appDatabase.getAttendanceDao().insert(attendance);
+                    }
+                }
 
                 listener.addPlayer(player);
                 dismiss();
