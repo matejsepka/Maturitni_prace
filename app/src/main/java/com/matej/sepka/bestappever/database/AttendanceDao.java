@@ -6,6 +6,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 @Dao
 public interface AttendanceDao {
@@ -18,4 +19,7 @@ public interface AttendanceDao {
 
     @Delete
     void delete(Attendance attendance);
+
+    @Update
+    void update(Attendance attendance);
 }

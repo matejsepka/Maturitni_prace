@@ -77,8 +77,8 @@ public class AttendanceDetailActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull final AttendanceViewHolder holder, int position) {
             final Attendance attendance = listAttendance.get(position);
-            String green = "#00e600";
-            String red = "#ff5c33";
+            String green = "#284d00";
+            String red = "#660000";
             String grey = "#303030";
             final int greenAsInt = Color.parseColor(green);
             final int redAsInt = Color.parseColor(red);
@@ -105,6 +105,8 @@ public class AttendanceDetailActivity extends AppCompatActivity {
                         attendance.setPresent(null);
                         holder.itemView.setBackgroundColor(greyAsInt);
                     }
+                    AppDatabase appDatabase = AppDatabase.getInstance(getApplication());
+                    appDatabase.getAttendanceDao().update(attendance);
                 }
             });
         }
