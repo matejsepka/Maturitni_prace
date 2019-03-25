@@ -4,28 +4,18 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <TextView
-        android:id="@+id/text_group_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorTextPrimary"
-        android:layout_marginLeft="5dp"
-        android:textSize="35sp"
-        android:textStyle="italic" />
-
     <Button
         android:id="@+id/attendance_btn"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Docházka"
         android:background="@drawable/rounded_button"
-        android:textColor="@color/colorTextPrimary"
-        android:layout_alignParentRight="true"/>
+        android:textColor="@color/colorTextPrimary" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/player_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/text_group_name"/>
+        android:layout_below="@id/attendance_btn"/>
 
 </RelativeLayout>

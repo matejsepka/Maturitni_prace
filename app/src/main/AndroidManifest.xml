@@ -17,7 +17,6 @@
             android:parentActivityName=".activity.MainActivity" />
         <activity
             android:name=".activity.GroupDetailActivity"
-            android:label="Trénink"
             android:parentActivityName=".activity.MainActivity" />
         <activity
             android:name=".activity.MainActivity"

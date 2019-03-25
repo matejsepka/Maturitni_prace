@@ -34,8 +34,7 @@ public class AttendanceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_attendance);
 
         group = (Group) getIntent().getExtras().getSerializable("group");
-        TextView attendanceTitle = findViewById(R.id.text_attendance_title);
-        attendanceTitle.setText("Docházka skupiny " + group.getName());
+        setTitle("Docházka skupiny " + group.getName());
         RecyclerView recyclerView = findViewById(R.id.attendance_recycler_view);
         AppDatabase appDatabase = AppDatabase.getInstance(getApplication());
 

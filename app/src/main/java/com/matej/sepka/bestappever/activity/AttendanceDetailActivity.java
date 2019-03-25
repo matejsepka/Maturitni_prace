@@ -33,12 +33,11 @@ public class AttendanceDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_attendance_detail);
 
         training = (Training) getIntent().getExtras().getSerializable("training");
-        TextView attendanceDetailTitle = findViewById(R.id.text_attendance_detail_title);
         RecyclerView recyclerView = findViewById(R.id.attendance_player_recycler_view);
         Date date = new Date();
         date.setTime(training.getMillis() * 1000);
         SimpleDateFormat sdf = new SimpleDateFormat("E dd. MMM yyyy");
-        attendanceDetailTitle.setText(sdf.format(date));
+        setTitle(sdf.format(date));
         AppDatabase appDatabase = AppDatabase.getInstance(getApplication());
 
         List<Attendance> listAttendance = new ArrayList<>();

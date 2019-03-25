@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements AddDialogListener
         @Override
         public CharSequence getPageTitle(int position) {
             if (position == 0) {
-                return "Tréninky";
+                return "Skupiny";
             } else {
                 return "Cvičení";
             }

@@ -40,8 +40,7 @@ public class GroupDetailActivity extends AppCompatActivity implements PlayerDial
         //Odkazy
 
         group = (Group) getIntent().getExtras().getSerializable("group");
-        TextView textGroupName = findViewById(R.id.text_group_name);
-        textGroupName.setText(group.getName());
+        setTitle(group.getName());
         Button attendanceBtn = findViewById(R.id.attendance_btn);
         RecyclerView recyclerView = findViewById(R.id.player_recycler_view);
         AppDatabase appDatabase = AppDatabase.getInstance(getApplication());
