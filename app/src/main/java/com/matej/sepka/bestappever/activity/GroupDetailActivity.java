@@ -184,6 +184,16 @@ public class GroupDetailActivity extends AppCompatActivity implements PlayerDial
                     return false;
                 }
             });
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), PlayerDetailActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("player", player);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+            });
         }
 
         //Počet opakování
