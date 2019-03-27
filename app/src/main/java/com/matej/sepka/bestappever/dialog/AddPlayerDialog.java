@@ -57,6 +57,7 @@ public class AddPlayerDialog extends BottomSheetDialogFragment {
                 String groupName = group.getName();
                 player.setName(editPlayerName.getText().toString());
                 player.setGroup(groupName);
+                player.setDateOfBirth(0);
 
                 AppDatabase appDatabase = AppDatabase.getInstance(getActivity().getApplication());
                 appDatabase.getPlayerDao().insert(player);

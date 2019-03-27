@@ -33,6 +33,24 @@ public class GroupDetailActivity extends AppCompatActivity implements PlayerDial
     private PlayersAdapter playersAdapter;
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        AppDatabase appDatabase = AppDatabase.getInstance(getApplication());
+        RecyclerView recyclerView = findViewById(R.id.player_recycler_view);
+        List<Player> AllPlayersList = appDatabase.getPlayerDao().getall();
+        List<Player> listPlayers = new ArrayList<>();
+        for (int i = 0; i < AllPlayersList.size(); i++) {
+            Player player = AllPlayersList.get(i);
+            if (player.getGroup().equals(group.getName())) {
+                listPlayers.add(player);
+            }
+        }
+        playersAdapter = new PlayersAdapter(listPlayers);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(playersAdapter);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_detail);

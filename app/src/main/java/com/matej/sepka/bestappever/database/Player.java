@@ -11,6 +11,7 @@ public class Player implements Serializable {
     private long id;
     private String name;
     private String group;
+    private long dateOfBirth;
 
     public long getId() {
         return id;
@@ -34,5 +35,13 @@ public class Player implements Serializable {
 
     public void setGroup(String group) {
         this.group = group;
+    }
+
+    public long getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(long dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 }

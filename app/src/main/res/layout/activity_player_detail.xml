@@ -41,7 +41,8 @@
         android:layout_below="@id/text_name"
         android:textColor="@color/colorTextPrimary"
         android:layout_margin="15dp"
-        android:layout_alignParentEnd="true"/>
+        android:layout_alignParentEnd="true"
+        android:hint="Přidat"/>
 
     <TextView
         android:id="@+id/text_3"
