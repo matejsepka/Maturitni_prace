@@ -27,6 +27,17 @@ public class PlayerDetailActivity extends AppCompatActivity {
     private TextView textDOB;
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        if (player.getDateOfBirth() != 0) {
+            Date date = new Date();
+            date.setTime(player.getDateOfBirth() * 1000);
+            SimpleDateFormat sdf = new SimpleDateFormat("dd. MMM yyyy");
+            textDOB.setText(sdf.format(date));
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_detail);

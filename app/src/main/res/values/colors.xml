@@ -9,6 +9,8 @@
     <color name="colorCard">#303030</color>
     <color name="colorPresent">#00e600</color>
     <color name="colorNotPresent">#ff5c33</color>
+    <color name="switchGreen">#4caf50</color>
+    <color name="black">#000000</color>
 
     <color name="LightGrey">#232222</color>
     <color name="DarkGrey">#5e5e5e</color>

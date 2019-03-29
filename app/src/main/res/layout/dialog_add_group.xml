@@ -6,28 +6,22 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <TextView
-        android:id="@+id/text_dialog_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Přidat skupinu"
-        android:textSize="20sp"/>
-
     <EditText
         android:id="@+id/edit_group_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Název skupiny"
-        android:textSize="25sp"
-        android:layout_below="@id/text_dialog_title"/>
+        android:hint="Sem vložte název skupiny"
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/text_9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Vyberte dny tréninků dané skupiny"
+        android:text="Vyberte dny v týdnu, kdy bude vaše skupina trénovat:"
         android:textSize="20sp"
-        android:layout_below="@id/edit_group_name"/>
+        android:layout_below="@id/edit_group_name"
+        android:layout_margin="15dp"
+        android:textColor="@color/black"/>
 
     <Switch
         android:id="@+id/monday_switch"
@@ -35,7 +29,10 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:text="Pondělí"
-        android:layout_below="@id/text_9"/>
+        android:layout_below="@id/text_9"
+        android:track="@drawable/rectangle_track"
+        android:thumb="@drawable/rectangle_thumb"
+        android:textColor="@color/LightGrey"/>
 
     <Switch
         android:id="@+id/tuesday_switch"
@@ -43,7 +40,10 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:text="Úterý"
-        android:layout_below="@id/monday_switch"/>
+        android:layout_below="@id/monday_switch"
+        android:track="@drawable/rectangle_track"
+        android:thumb="@drawable/rectangle_thumb"
+        android:textColor="@color/LightGrey"/>
 
     <Switch
         android:id="@+id/wednesday_switch"
@@ -51,7 +51,10 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:text="Středa"
-        android:layout_below="@id/tuesday_switch"/>
+        android:layout_below="@id/tuesday_switch"
+        android:track="@drawable/rectangle_track"
+        android:thumb="@drawable/rectangle_thumb"
+        android:textColor="@color/LightGrey"/>
 
     <Switch
         android:id="@+id/thursday_switch"
@@ -59,7 +62,10 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:text="Čtvrtek"
-        android:layout_below="@id/wednesday_switch"/>
+        android:layout_below="@id/wednesday_switch"
+        android:track="@drawable/rectangle_track"
+        android:thumb="@drawable/rectangle_thumb"
+        android:textColor="@color/LightGrey"/>
 
     <Switch
         android:id="@+id/friday_switch"
@@ -68,7 +74,10 @@
         android:layout_below="@id/text_9"
         android:layout_alignParentRight="true"
         android:text="Pátek"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:track="@drawable/rectangle_track"
+        android:thumb="@drawable/rectangle_thumb"
+        android:textColor="@color/LightGrey"/>
 
     <Switch
         android:id="@+id/saturday_switch"
@@ -77,7 +86,10 @@
         android:layout_below="@id/friday_switch"
         android:layout_alignParentRight="true"
         android:text="Sobota"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:track="@drawable/rectangle_track"
+        android:thumb="@drawable/rectangle_thumb"
+        android:textColor="@color/LightGrey"/>
 
     <Switch
         android:id="@+id/sunday_switch"
@@ -86,14 +98,18 @@
         android:layout_below="@id/saturday_switch"
         android:layout_alignParentRight="true"
         android:text="Neděle"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:track="@drawable/rectangle_track"
+        android:thumb="@drawable/rectangle_thumb"
+        android:textColor="@color/LightGrey"/>
 
     <Button
         android:id="@+id/button_save"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Uložit"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/thursday_switch"/>
+        android:layout_below="@id/thursday_switch"
+        android:layout_margin="20dp"/>
 
 </RelativeLayout>

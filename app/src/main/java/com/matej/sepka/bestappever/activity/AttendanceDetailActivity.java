@@ -76,8 +76,8 @@ public class AttendanceDetailActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull final AttendanceViewHolder holder, int position) {
             final Attendance attendance = listAttendance.get(position);
-            String green = "#284d00";
-            String red = "#660000";
+            String green = "#4caf50";
+            String red = "#F44336";
             String grey = "#303030";
             final int greenAsInt = Color.parseColor(green);
             final int redAsInt = Color.parseColor(red);
