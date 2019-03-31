@@ -1,33 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text_dialog_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="Přidat cvičení"/>
-
-    <EditText
-        android:id="@+id/edit_game_situation_name"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Název cvičení"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_dialog_title" />
+        android:layout_height="match_parent"
+        android:padding="16dp">
 
-    <Button
-        android:id="@+id/button_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Uložit"
-        app:layout_constraintTop_toBottomOf="@id/edit_game_situation_name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        <EditText
+            android:id="@+id/edit_game_situation_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Sem vložte název cvičení"
+            android:textSize="25sp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/text_10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edit_game_situation_name"
+            android:textSize="20sp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/black"
+            android:text="Vyberte obtížnost cvičení:"/>
+
+        <Switch
+            android:id="@+id/beginner_switch"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="Začátečníci"
+            android:layout_below="@id/text_10"
+            android:layout_marginTop="15dp"
+            android:thumb="@drawable/rectangle_thumb"
+            android:track="@drawable/rectangle_track"
+            android:textColor="@color/DarkGrey"/>
+
+        <Switch
+            android:id="@+id/advanced_switch"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="Pokročilí"
+            android:layout_below="@id/beginner_switch"
+            android:layout_marginTop="15dp"
+            android:thumb="@drawable/rectangle_thumb"
+            android:track="@drawable/rectangle_track"
+            android:textColor="@color/DarkGrey"/>
+
+        <Switch
+            android:id="@+id/competitive_switch"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="Závodní hráči"
+            android:layout_below="@id/advanced_switch"
+            android:layout_marginTop="15dp"
+            android:thumb="@drawable/rectangle_thumb"
+            android:track="@drawable/rectangle_track"
+            android:textColor="@color/DarkGrey"/>
+
+        <TextView
+            android:id="@+id/text_11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/competitive_switch"
+            android:textSize="20sp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/black"
+            android:text="Vyberte na co je cvičení zaměřeno:"/>
+
+        <Switch
+            android:id="@+id/defense_switch"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="Obrana"
+            android:layout_below="@id/text_11"
+            android:layout_marginTop="15dp"
+            android:thumb="@drawable/rectangle_thumb"
+            android:track="@drawable/rectangle_track"
+            android:textColor="@color/DarkGrey"/>
+
+        <Switch
+            android:id="@+id/attack_switch"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="Útok"
+            android:layout_below="@id/defense_switch"
+            android:layout_marginTop="15dp"
+            android:thumb="@drawable/rectangle_thumb"
+            android:track="@drawable/rectangle_track"
+            android:textColor="@color/DarkGrey"/>
+
+        <Switch
+            android:id="@+id/receive_switch"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="Příjem"
+            android:layout_below="@id/attack_switch"
+            android:layout_marginTop="15dp"
+            android:thumb="@drawable/rectangle_thumb"
+            android:track="@drawable/rectangle_track"
+            android:textColor="@color/DarkGrey"/>
+
+        <Switch
+            android:id="@+id/serve_switch"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="Podání"
+            android:layout_below="@id/receive_switch"
+            android:layout_marginTop="15dp"
+            android:thumb="@drawable/rectangle_thumb"
+            android:track="@drawable/rectangle_track"
+            android:textColor="@color/DarkGrey"/>
+
+        <TextView
+            android:id="@+id/text_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/serve_switch"
+            android:textSize="20sp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/black"
+            android:text="Popište své cvičení:"/>
+
+        <EditText
+            android:id="@+id/edit_game_situation_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_12"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/DarkGrey"
+            android:textSize="20sp"
+            />
+
+        <Button
+            android:id="@+id/button_save"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Uložit"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/edit_game_situation_description"/>
+
+    </RelativeLayout>
+</ScrollView>

@@ -10,6 +10,9 @@ public class GameSituation implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private long id;
     private String name;
+    private String description;
+    private String difficulty; //beginner, advanced, competitive
+    private String gameActivity; //defense, attack, block, serve, receive
 
     public long getId() {
         return id;
@@ -25,5 +28,29 @@ public class GameSituation implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(String difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public String getGameActivity() {
+        return gameActivity;
+    }
+
+    public void setGameActivity(String gameActivity) {
+        this.gameActivity = gameActivity;
     }
 }

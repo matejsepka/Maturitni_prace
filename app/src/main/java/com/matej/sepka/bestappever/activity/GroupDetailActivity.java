@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.matej.sepka.bestappever.database.AppDatabase;
 import com.matej.sepka.bestappever.database.Group;
 import com.matej.sepka.bestappever.R;
@@ -59,7 +60,7 @@ public class GroupDetailActivity extends AppCompatActivity implements PlayerDial
 
         group = (Group) getIntent().getExtras().getSerializable("group");
         setTitle(group.getName());
-        Button attendanceBtn = findViewById(R.id.attendance_btn);
+        FloatingActionButton attendanceFab = findViewById(R.id.attendance_fab);
         RecyclerView recyclerView = findViewById(R.id.player_recycler_view);
         AppDatabase appDatabase = AppDatabase.getInstance(getApplication());
 
@@ -82,7 +83,7 @@ public class GroupDetailActivity extends AppCompatActivity implements PlayerDial
 
         //Otevření stránky s docházkou
 
-        attendanceBtn.setOnClickListener(new View.OnClickListener() {
+        attendanceFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), AttendanceActivity.class);
