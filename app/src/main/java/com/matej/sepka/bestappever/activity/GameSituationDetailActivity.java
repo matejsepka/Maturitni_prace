@@ -21,9 +21,49 @@ public class GameSituationDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_situation_detail);
         gameSituation = (GameSituation) getIntent().getExtras().getSerializable("game_situation");
+        setTitle(gameSituation.getName());
 
-        TextView textGameSituationName = findViewById(R.id.text_game_situation_name);
-        textGameSituationName.setText(gameSituation.getName());
+        TextView textDifficulty = findViewById(R.id.text_difficulty);
+        TextView textCoverage = findViewById(R.id.text_coverage);
+        TextView textDescription = findViewById(R.id.text_description);
+        String stringCoverage = "Nebylo definováno";
+        boolean stringChanged = false;
+
+        textDifficulty.setText(gameSituation.getDifficulty());
+
+        if (gameSituation.isDefense()) {
+            stringCoverage = "obrana";
+            stringChanged = true;
+        }
+
+        if (gameSituation.isAttack()) {
+            if (stringChanged) {
+                stringCoverage = stringCoverage + ", útok";
+            } else {
+                stringCoverage = "útok";
+                stringChanged = true;
+            }
+        }
+
+        if (gameSituation.isReceive()) {
+            if (stringChanged) {
+                stringCoverage = stringCoverage + ", příjem";
+            } else {
+                stringCoverage = "příjem";
+                stringChanged = true;
+            }
+        }
+
+        if (gameSituation.isServe()) {
+            if (stringChanged) {
+                stringCoverage = stringCoverage + ", podání";
+            } else {
+                stringCoverage = "podání";
+            }
+        }
+
+        textCoverage.setText(stringCoverage);
+        textDescription.setText(gameSituation.getDescription());
     }
 
     @Override

@@ -12,7 +12,10 @@ public class GameSituation implements Serializable {
     private String name;
     private String description;
     private String difficulty; //beginner, advanced, competitive
-    private String gameActivity; //defense, attack, block, serve, receive
+    private boolean defense;
+    private boolean attack;
+    private boolean receive;
+    private boolean serve;
 
     public long getId() {
         return id;
@@ -46,11 +49,35 @@ public class GameSituation implements Serializable {
         this.difficulty = difficulty;
     }
 
-    public String getGameActivity() {
-        return gameActivity;
+    public void setDefense(boolean defense) {
+        this.defense = defense;
     }
 
-    public void setGameActivity(String gameActivity) {
-        this.gameActivity = gameActivity;
+    public boolean isDefense() {
+        return defense;
+    }
+
+    public void setAttack(boolean attack) {
+        this.attack = attack;
+    }
+
+    public boolean isAttack() {
+        return attack;
+    }
+
+    public void setReceive(boolean receive) {
+        this.receive = receive;
+    }
+
+    public boolean isReceive() {
+        return receive;
+    }
+
+    public void setServe(boolean serve) {
+        this.serve = serve;
+    }
+
+    public boolean isServe() {
+        return serve;
     }
 }
