@@ -7,11 +7,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.matej.sepka.bestappever.R;
 import com.matej.sepka.bestappever.database.GameSituation;
-import com.matej.sepka.bestappever.database.Group;
 import com.matej.sepka.bestappever.dialog.DeleteGameSituationDialog;
 
 public class GameSituationDetailActivity extends AppCompatActivity {
@@ -26,6 +26,7 @@ public class GameSituationDetailActivity extends AppCompatActivity {
         setTitle(gameSituation.getName());
 
         TextView textAnimation = findViewById(R.id.text_16);
+        Button watchAnimBtn = findViewById(R.id.watch_animation_btn);
         TextView textDifficulty = findViewById(R.id.text_difficulty);
         TextView textCoverage = findViewById(R.id.text_coverage);
         TextView textDescription = findViewById(R.id.text_description);
@@ -71,7 +72,18 @@ public class GameSituationDetailActivity extends AppCompatActivity {
         textAnimation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AnimationActivity.class);
+                Intent intent = new Intent(getApplicationContext(), AnimationCreatorActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("game_situation", gameSituation);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+
+        watchAnimBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AnimationWatchActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("game_situation", gameSituation);
                 intent.putExtras(bundle);

@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.AnimationActivity"></activity>
+        <activity android:name=".activity.AnimationWatchActivity"></activity>
+        <activity android:name=".activity.AnimationCreatorActivity" />
         <activity android:name=".activity.PlayerDetailActivity" />
         <activity android:name=".activity.AttendanceDetailActivity" />
         <activity android:name=".activity.AttendanceActivity" />

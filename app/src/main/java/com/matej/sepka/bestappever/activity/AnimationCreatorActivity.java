@@ -2,11 +2,9 @@ package com.matej.sepka.bestappever.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -17,7 +15,7 @@ import com.matej.sepka.bestappever.database.Animation;
 import com.matej.sepka.bestappever.database.AppDatabase;
 import com.matej.sepka.bestappever.database.GameSituation;
 
-public class AnimationActivity extends AppCompatActivity {
+public class AnimationCreatorActivity extends AppCompatActivity {
     private GameSituation gameSituation;
     private int _xDelta;
     private int _yDelta;
@@ -50,7 +48,7 @@ public class AnimationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_animation);
+        setContentView(R.layout.activity_animation_creator);
 
         gameSituation = (GameSituation) getIntent().getExtras().getSerializable("game_situation");
         setTitle("Animace ke cvičení" + gameSituation.getName());
