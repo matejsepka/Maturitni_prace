@@ -2,9 +2,11 @@ package com.matej.sepka.bestappever.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.matej.sepka.bestappever.R;
@@ -23,6 +25,7 @@ public class GameSituationDetailActivity extends AppCompatActivity {
         gameSituation = (GameSituation) getIntent().getExtras().getSerializable("game_situation");
         setTitle(gameSituation.getName());
 
+        TextView textAnimation = findViewById(R.id.text_16);
         TextView textDifficulty = findViewById(R.id.text_difficulty);
         TextView textCoverage = findViewById(R.id.text_coverage);
         TextView textDescription = findViewById(R.id.text_description);
@@ -64,6 +67,17 @@ public class GameSituationDetailActivity extends AppCompatActivity {
 
         textCoverage.setText(stringCoverage);
         textDescription.setText(gameSituation.getDescription());
+
+        textAnimation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AnimationActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("game_situation", gameSituation);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

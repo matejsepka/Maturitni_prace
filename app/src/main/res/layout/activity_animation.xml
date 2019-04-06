@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.matej.sepka.bestappever.activity.AnimationActivity"
+    android:id="@+id/view_root">
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="500dp"
+        android:src="@drawable/volleyball_court" />
+
+    <ImageView
+        android:id="@+id/player_one_img"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/player_one"
+        android:layout_alignParentBottom="true" />
+
+    <ImageView
+        android:id="@+id/player_two_img"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/player_two"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="90dp"/>
+
+    <ImageView
+        android:id="@+id/ball_one_img"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/volleyball_icon"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="190dp"
+        android:layout_marginBottom="17dp"/>
+
+    <Button
+        android:id="@+id/next_frame_btn"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:background="@android:drawable/ic_media_play" />
+
+</RelativeLayout>
