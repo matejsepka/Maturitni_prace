@@ -6,7 +6,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Group.class, GameSituation.class, Player.class, Training.class, Attendance.class, Animation.class}, version = 10, exportSchema = false)
+@Database(entities = {Group.class, GameSituation.class, Player.class, Training.class, Attendance.class, Animation.class}, version = 11, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     public static AppDatabase getInstance(Application application) {

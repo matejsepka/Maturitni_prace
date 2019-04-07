@@ -23,6 +23,22 @@
         android:layout_marginStart="90dp"/>
 
     <ImageView
+        android:id="@+id/player_three_img"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/player_three"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="90dp"/>
+
+    <ImageView
+        android:id="@+id/player_four_img"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/player_four"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="90dp"/>
+
+    <ImageView
         android:id="@+id/ball_one_img"
         android:layout_width="20dp"
         android:layout_height="20dp"
