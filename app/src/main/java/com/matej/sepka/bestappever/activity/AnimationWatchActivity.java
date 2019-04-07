@@ -62,6 +62,7 @@ public class AnimationWatchActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 AnimatorSet animatorSet = new AnimatorSet();
+                AnimatorSet animatorSetHelper1 = new AnimatorSet();
                 AnimatorSet animatorSet1 = new AnimatorSet();
                 ObjectAnimator PlayerOneY1 = new ObjectAnimator().ofFloat(imgPlayerOne,"translationY" , animation.getPlayerOneY2());
                 ObjectAnimator PlayerOneX1 = new ObjectAnimator().ofFloat(imgPlayerOne,"translationX" , animation.getPlayerOneX2());
@@ -70,7 +71,7 @@ public class AnimationWatchActivity extends AppCompatActivity {
                 ObjectAnimator BallOneX1 = new ObjectAnimator().ofFloat(imgBallOne,"translationX" , animation.getBallOneX2());
                 ObjectAnimator BallOneY1 = new ObjectAnimator().ofFloat(imgBallOne,"translationY" , animation.getBallOneY2());
                 animatorSet1.playTogether(PlayerOneX1,PlayerOneY1, PlayerTwoX1, PlayerTwoY1, BallOneX1, BallOneY1);
-                animatorSet1.setDuration(3000);
+                animatorSet1.setDuration(2500);
 
                 AnimatorSet animatorSet2 = new AnimatorSet();
                 ObjectAnimator PlayerOneX2 = new ObjectAnimator().ofFloat(imgPlayerOne, "translationX", animation.getPlayerOneX3());
@@ -80,8 +81,32 @@ public class AnimationWatchActivity extends AppCompatActivity {
                 ObjectAnimator BallOneX2 = new ObjectAnimator().ofFloat(imgBallOne, "translationX", animation.getBallOneX3());
                 ObjectAnimator BallOneY2 = new ObjectAnimator().ofFloat(imgBallOne, "translationY", animation.getBallOneY3());
                 animatorSet2.playTogether(PlayerOneX2, PlayerOneY2, PlayerTwoX2, PlayerTwoY2, BallOneX2, BallOneY2);
-                animatorSet2.setDuration(3000);
-                animatorSet.play(animatorSet1).before(animatorSet2);
+                animatorSet2.setDuration(2500);
+                animatorSetHelper1.play(animatorSet1).before(animatorSet2);
+
+                AnimatorSet animatorSetHelper2 = new AnimatorSet();
+                AnimatorSet animatorSet3 = new AnimatorSet();
+                ObjectAnimator PlayerOneX3 = new ObjectAnimator().ofFloat(imgPlayerOne, "translationX", animation.getPlayerOneX4());
+                ObjectAnimator PlayerOneY3 = new ObjectAnimator().ofFloat(imgPlayerOne, "translationY", animation.getPlayerOneY4());
+                ObjectAnimator PlayerTwoX3 = new ObjectAnimator().ofFloat(imgPlayerTwo, "translationX", animation.getPlayerTwoX4());
+                ObjectAnimator PlayerTwoY3 = new ObjectAnimator().ofFloat(imgPlayerTwo, "translationY", animation.getPlayerTwoY4());
+                ObjectAnimator BallOneX3 = new ObjectAnimator().ofFloat(imgBallOne, "translationX", animation.getBallOneX4());
+                ObjectAnimator BallOneY3 = new ObjectAnimator().ofFloat(imgBallOne, "translationY", animation.getBallOneY4());
+                animatorSet3.playTogether(PlayerOneX3, PlayerOneY3, PlayerTwoX3, PlayerTwoY3, BallOneX3, BallOneY3);
+                animatorSet3.setDuration(2500);
+
+                AnimatorSet animatorSet4 = new AnimatorSet();
+                ObjectAnimator PlayerOneX4 = new ObjectAnimator().ofFloat(imgPlayerOne, "translationX", animation.getPlayerOneX5());
+                ObjectAnimator PlayerOneY4 = new ObjectAnimator().ofFloat(imgPlayerOne, "translationY", animation.getPlayerOneY5());
+                ObjectAnimator PlayerTwoX4 = new ObjectAnimator().ofFloat(imgPlayerTwo, "translationX", animation.getPlayerTwoX5());
+                ObjectAnimator PlayerTwoY4 = new ObjectAnimator().ofFloat(imgPlayerTwo, "translationY", animation.getPlayerTwoY5());
+                ObjectAnimator BallOneX4 = new ObjectAnimator().ofFloat(imgBallOne, "translationX", animation.getBallOneX5());
+                ObjectAnimator BallOneY4 = new ObjectAnimator().ofFloat(imgBallOne, "translationY", animation.getBallOneY5());
+                animatorSet4.playTogether(PlayerOneX4, PlayerOneY4, PlayerTwoX4, PlayerTwoY4, BallOneX4, BallOneY4);
+                animatorSet4.setDuration(2500);
+                animatorSetHelper2.play(animatorSet3).before(animatorSet4);
+
+                animatorSet.play(animatorSetHelper1).before(animatorSetHelper2);
                 animatorSet.start();
             }
         });

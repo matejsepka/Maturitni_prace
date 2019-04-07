@@ -16,6 +16,10 @@ public class Animation implements Serializable {
     private float playerOneY2;
     private float playerOneX3;
     private float playerOneY3;
+    private float playerOneX4;
+    private float playerOneY4;
+    private float playerOneX5;
+    private float playerOneY5;
 
     private float playerTwoX1;
     private float playerTwoY1;
@@ -23,6 +27,10 @@ public class Animation implements Serializable {
     private float playerTwoY2;
     private float playerTwoX3;
     private float playerTwoY3;
+    private float playerTwoX4;
+    private float playerTwoY4;
+    private float playerTwoX5;
+    private float playerTwoY5;
 
     private float BallOneX1;
     private float BallOneY1;
@@ -30,6 +38,10 @@ public class Animation implements Serializable {
     private float BallOneY2;
     private float BallOneX3;
     private float BallOneY3;
+    private float BallOneX4;
+    private float BallOneY4;
+    private float BallOneX5;
+    private float BallOneY5;
 
     public long getId() {
         return id;
@@ -189,5 +201,101 @@ public class Animation implements Serializable {
 
     public void setBallOneY3(float ballOneY3) {
         BallOneY3 = ballOneY3;
+    }
+
+    public float getPlayerOneX4() {
+        return playerOneX4;
+    }
+
+    public void setPlayerOneX4(float playerOneX4) {
+        this.playerOneX4 = playerOneX4;
+    }
+
+    public float getPlayerOneY4() {
+        return playerOneY4;
+    }
+
+    public void setPlayerOneY4(float playerOneY4) {
+        this.playerOneY4 = playerOneY4;
+    }
+
+    public float getPlayerOneX5() {
+        return playerOneX5;
+    }
+
+    public void setPlayerOneX5(float playerOneX5) {
+        this.playerOneX5 = playerOneX5;
+    }
+
+    public float getPlayerOneY5() {
+        return playerOneY5;
+    }
+
+    public void setPlayerOneY5(float playerOneY5) {
+        this.playerOneY5 = playerOneY5;
+    }
+
+    public float getPlayerTwoX4() {
+        return playerTwoX4;
+    }
+
+    public void setPlayerTwoX4(float playerTwoX4) {
+        this.playerTwoX4 = playerTwoX4;
+    }
+
+    public float getPlayerTwoY4() {
+        return playerTwoY4;
+    }
+
+    public void setPlayerTwoY4(float playerTwoY4) {
+        this.playerTwoY4 = playerTwoY4;
+    }
+
+    public float getPlayerTwoX5() {
+        return playerTwoX5;
+    }
+
+    public void setPlayerTwoX5(float playerTwoX5) {
+        this.playerTwoX5 = playerTwoX5;
+    }
+
+    public float getPlayerTwoY5() {
+        return playerTwoY5;
+    }
+
+    public void setPlayerTwoY5(float playerTwoY5) {
+        this.playerTwoY5 = playerTwoY5;
+    }
+
+    public float getBallOneX4() {
+        return BallOneX4;
+    }
+
+    public void setBallOneX4(float ballOneX4) {
+        BallOneX4 = ballOneX4;
+    }
+
+    public float getBallOneY4() {
+        return BallOneY4;
+    }
+
+    public void setBallOneY4(float ballOneY4) {
+        BallOneY4 = ballOneY4;
+    }
+
+    public float getBallOneX5() {
+        return BallOneX5;
+    }
+
+    public void setBallOneX5(float ballOneX5) {
+        BallOneX5 = ballOneX5;
+    }
+
+    public float getBallOneY5() {
+        return BallOneY5;
+    }
+
+    public void setBallOneY5(float ballOneY5) {
+        BallOneY5 = ballOneY5;
     }
 }

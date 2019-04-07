@@ -28,6 +28,10 @@ public class AnimationCreatorActivity extends AppCompatActivity {
     private float playerOneY2;
     private float playerOneX3;
     private float playerOneY3;
+    private float playerOneX4;
+    private float playerOneY4;
+    private float playerOneX5;
+    private float playerOneY5;
 
     private float playerTwoX1;
     private float playerTwoY1;
@@ -35,6 +39,10 @@ public class AnimationCreatorActivity extends AppCompatActivity {
     private float playerTwoY2;
     private float playerTwoX3;
     private float playerTwoY3;
+    private float playerTwoX4;
+    private float playerTwoY4;
+    private float playerTwoX5;
+    private float playerTwoY5;
 
     private float ballOneX1;
     private float ballOneY1;
@@ -42,6 +50,10 @@ public class AnimationCreatorActivity extends AppCompatActivity {
     private float ballOneY2;
     private float ballOneX3;
     private float ballOneY3;
+    private float ballOneX4;
+    private float ballOneY4;
+    private float ballOneX5;
+    private float ballOneY5;
 
 
 
@@ -79,7 +91,7 @@ public class AnimationCreatorActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 switch (frameCount) {
-                    case 4:
+                    case 6:
                         AppDatabase appDatabase = AppDatabase.getInstance(getApplication());
                         Animation animation = new Animation();
                         animation.setName(gameSituation.getName());
@@ -89,23 +101,58 @@ public class AnimationCreatorActivity extends AppCompatActivity {
                         animation.setPlayerOneY2(playerOneY2);
                         animation.setPlayerOneX3(playerOneX3);
                         animation.setPlayerOneY3(playerOneY3);
+                        animation.setPlayerOneX4(playerOneX4);
+                        animation.setPlayerOneY4(playerOneY4);
+                        animation.setPlayerOneX5(playerOneX5);
+                        animation.setPlayerOneY5(playerOneY5);
+
                         animation.setPlayerTwoX1(playerTwoX1);
                         animation.setPlayerTwoY1(playerTwoY1);
                         animation.setPlayerTwoX2(playerTwoX2);
                         animation.setPlayerTwoY2(playerTwoY2);
                         animation.setPlayerTwoX3(playerTwoX3);
                         animation.setPlayerTwoY3(playerTwoY3);
+                        animation.setPlayerTwoX4(playerTwoX4);
+                        animation.setPlayerTwoY4(playerTwoY4);
+                        animation.setPlayerTwoX5(playerTwoX5);
+                        animation.setPlayerTwoY5(playerTwoY5);
+
                         animation.setBallOneX1(ballOneX1);
                         animation.setBallOneY1(ballOneY1);
                         animation.setBallOneX2(ballOneX2);
                         animation.setBallOneY2(ballOneY2);
                         animation.setBallOneX3(ballOneX3);
                         animation.setBallOneY3(ballOneY3);
+                        animation.setBallOneX4(ballOneX4);
+                        animation.setBallOneY4(ballOneY4);
+                        animation.setBallOneX5(ballOneX5);
+                        animation.setBallOneY5(ballOneY5);
+
                         appDatabase.getAnimationDao().insert(animation);
                         finish();
                         break;
-                    case 3:
+                    case 5:
                         Toast.makeText(getApplicationContext(),"Již máte maximální počet obrázků v animaci! Klikněte ještě jednou pro uložení.", Toast.LENGTH_LONG).show();
+                        frameCount++;
+                        break;
+                    case 4:
+                        playerOneX5 = imagePlayerOne.getX();
+                        playerOneY5 = imagePlayerOne.getY();
+                        playerTwoX5 = imagePlayerTwo.getX();
+                        playerTwoY5 = imagePlayerTwo.getY();
+                        ballOneX5 = imageBallOne.getX();
+                        ballOneY5 = imageBallOne.getY();
+                        Toast.makeText(getApplicationContext(),"Pátý obrázek animace byl vytvořen.", Toast.LENGTH_LONG).show();
+                        frameCount++;
+                        break;
+                    case 3:
+                        playerOneX4 = imagePlayerOne.getX();
+                        playerOneY4 = imagePlayerOne.getY();
+                        playerTwoX4 = imagePlayerTwo.getX();
+                        playerTwoY4 = imagePlayerTwo.getY();
+                        ballOneX4 = imageBallOne.getX();
+                        ballOneY4 = imageBallOne.getY();
+                        Toast.makeText(getApplicationContext(),"Čtvrtý obrázek animace byl vytvořen.", Toast.LENGTH_LONG).show();
                         frameCount++;
                         break;
                     case 2:
