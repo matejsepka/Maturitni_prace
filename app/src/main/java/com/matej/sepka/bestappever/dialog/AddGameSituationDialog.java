@@ -82,7 +82,7 @@ public class AddGameSituationDialog extends BottomSheetDialogFragment {
             @Override
             public void onClick(View v) {
                 beginnerSwitch.setChecked(false);
-                competitiveSwitch.setChecked(false);
+                advancedSwitch.setChecked(false);
             }
         });
 

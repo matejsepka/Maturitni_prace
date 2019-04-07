@@ -60,19 +60,19 @@ public class AnimationCreatorActivity extends AppCompatActivity {
         RelativeLayout.LayoutParams layoutParams1 = new RelativeLayout.LayoutParams(70, 70);
         imagePlayerOne.setLayoutParams(layoutParams1);
         imagePlayerOne.setX(50);
-        imagePlayerOne.setY(1000);
+        imagePlayerOne.setY(1040);
         imagePlayerOne.setOnTouchListener(new PlayerOneTouchListener());
 
         RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams(70, 70);
         imagePlayerTwo.setLayoutParams(layoutParams2);
-        imagePlayerTwo.setX(150);
-        imagePlayerTwo.setY(1000);
+        imagePlayerTwo.setX(200);
+        imagePlayerTwo.setY(1040);
         imagePlayerTwo.setOnTouchListener(new PlayerTwoTouchListener());
 
         RelativeLayout.LayoutParams layoutParams3 = new RelativeLayout.LayoutParams(50 , 50);
         imageBallOne.setLayoutParams(layoutParams3);
-        imageBallOne.setX(250);
-        imageBallOne.setY(1000);
+        imageBallOne.setX(350);
+        imageBallOne.setY(1050);
         imageBallOne.setOnTouchListener(new BallOneTouchListener());
 
         nextFrameButton.setOnClickListener(new View.OnClickListener() {

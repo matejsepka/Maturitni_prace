@@ -7,9 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.matej.sepka.bestappever.R;
+import com.matej.sepka.bestappever.database.Animation;
 import com.matej.sepka.bestappever.database.AppDatabase;
 import com.matej.sepka.bestappever.database.GameSituation;
 import com.matej.sepka.bestappever.database.Group;
+
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDialogFragment;
@@ -35,6 +38,15 @@ public class DeleteGameSituationDialog extends AppCompatDialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         AppDatabase appDatabase = AppDatabase.getInstance(getActivity().getApplication());
+
+                        List<Animation> AllAnimationsList = appDatabase.getAnimationDao().getAll();
+                        for (int i = 0; i < AllAnimationsList.size(); i++) {
+                            Animation anim = AllAnimationsList.get(i);
+                            if (anim.getName().equals(gameSituation.getName())) {
+                                appDatabase.getAnimationDao().delete(anim);
+                            }
+                        }
+
                         appDatabase.getGameSituationDao().delete(gameSituation);
                         getActivity().finish();
                         dismiss();

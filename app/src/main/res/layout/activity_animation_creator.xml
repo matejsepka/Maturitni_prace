@@ -5,12 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.matej.sepka.bestappever.activity.AnimationCreatorActivity"
-    android:id="@+id/view_root">
-
-    <ImageView
-        android:layout_width="300dp"
-        android:layout_height="500dp"
-        android:src="@drawable/volleyball_court" />
+    android:background="@drawable/volleyball_court_background">
 
     <ImageView
         android:id="@+id/player_one_img"

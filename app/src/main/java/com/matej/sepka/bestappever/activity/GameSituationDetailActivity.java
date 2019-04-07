@@ -11,12 +11,30 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.matej.sepka.bestappever.R;
+import com.matej.sepka.bestappever.database.Animation;
+import com.matej.sepka.bestappever.database.AppDatabase;
 import com.matej.sepka.bestappever.database.GameSituation;
 import com.matej.sepka.bestappever.dialog.DeleteGameSituationDialog;
+
+import java.util.List;
 
 public class GameSituationDetailActivity extends AppCompatActivity {
 
     private GameSituation gameSituation;
+    private Button animationBtn;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        AppDatabase appDatabase = AppDatabase.getInstance(getApplication());
+        List<Animation> AllAnimationsList = appDatabase.getAnimationDao().getAll();
+        for (int i = 0; i < AllAnimationsList.size(); i++) {
+            Animation anim = AllAnimationsList.get(i);
+            if (anim.getName().equals(gameSituation.getName())) {
+                animationBtn.setText("Zhlédnout animaci");
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +43,8 @@ public class GameSituationDetailActivity extends AppCompatActivity {
         gameSituation = (GameSituation) getIntent().getExtras().getSerializable("game_situation");
         setTitle(gameSituation.getName());
 
-        TextView textAnimation = findViewById(R.id.text_16);
-        Button watchAnimBtn = findViewById(R.id.watch_animation_btn);
+        final AppDatabase appDatabase = AppDatabase.getInstance(getApplication());
+        animationBtn = findViewById(R.id.animation_btn);
         TextView textDifficulty = findViewById(R.id.text_difficulty);
         TextView textCoverage = findViewById(R.id.text_coverage);
         TextView textDescription = findViewById(R.id.text_description);
@@ -69,25 +87,39 @@ public class GameSituationDetailActivity extends AppCompatActivity {
         textCoverage.setText(stringCoverage);
         textDescription.setText(gameSituation.getDescription());
 
-        textAnimation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AnimationCreatorActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("game_situation", gameSituation);
-                intent.putExtras(bundle);
-                startActivity(intent);
+        List<Animation> AllAnimationsList = appDatabase.getAnimationDao().getAll();
+        for (int i = 0; i < AllAnimationsList.size(); i++) {
+            Animation anim = AllAnimationsList.get(i);
+            if (anim.getName().equals(gameSituation.getName())) {
+                animationBtn.setText("Zhlédnout animaci");
             }
-        });
+        }
 
-        watchAnimBtn.setOnClickListener(new View.OnClickListener() {
+        animationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AnimationWatchActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("game_situation", gameSituation);
-                intent.putExtras(bundle);
-                startActivity(intent);
+                boolean gameSituationHasAnimation = false;
+                List<Animation> AllAnimationsList = appDatabase.getAnimationDao().getAll();
+                for (int i = 0; i < AllAnimationsList.size(); i++) {
+                    Animation anim = AllAnimationsList.get(i);
+                    if (anim.getName().equals(gameSituation.getName())) {
+                        gameSituationHasAnimation = true;
+                    }
+                }
+
+                if (gameSituationHasAnimation) {
+                    Intent intent = new Intent(getApplicationContext(), AnimationWatchActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("game_situation", gameSituation);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(getApplicationContext(), AnimationCreatorActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("game_situation", gameSituation);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
             }
         });
     }
