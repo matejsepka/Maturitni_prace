@@ -11,14 +11,14 @@ import com.matej.sepka.bestappever.R;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-public class AboutDialogFragment extends AppCompatDialogFragment {
+public class AboutDialogMainActivity extends AppCompatDialogFragment {
 
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        View view = View.inflate(getContext(), R.layout.dialog_about, null);
+        View view = View.inflate(getContext(), R.layout.dialog_about_main_activity, null);
 
         builder.setView(view)
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {

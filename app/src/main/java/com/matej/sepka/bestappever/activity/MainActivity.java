@@ -1,6 +1,5 @@
 package com.matej.sepka.bestappever.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -9,7 +8,7 @@ import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
-import com.matej.sepka.bestappever.dialog.AboutDialogFragment;
+import com.matej.sepka.bestappever.dialog.AboutDialogMainActivity;
 import com.matej.sepka.bestappever.dialog.AddDialogListener;
 import com.matej.sepka.bestappever.dialog.AddGameSituationDialog;
 import com.matej.sepka.bestappever.dialog.AddGroupDialog;
@@ -76,9 +75,6 @@ public class MainActivity extends AppCompatActivity implements AddDialogListener
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_settings:
-                openSettings();
-                break;
             case R.id.action_about:
                 showAboutDialog();
                 break;
@@ -86,13 +82,8 @@ public class MainActivity extends AppCompatActivity implements AddDialogListener
         return super.onOptionsItemSelected(item);
     }
 
-    private void openSettings() {
-        Intent intentSettings = new Intent(MainActivity.this, SettingsActivity.class);
-        startActivity(intentSettings);
-    }
-
     private void showAboutDialog() {
-        AboutDialogFragment aboutDialog = new AboutDialogFragment();
+        AboutDialogMainActivity aboutDialog = new AboutDialogMainActivity();
         aboutDialog.show(getSupportFragmentManager(), "dialog_fragment_about");
     }
 

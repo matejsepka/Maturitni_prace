@@ -3,15 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_delete"
-        android:icon="@drawable/delete_group_icon"
-        android:title="Odstranit"
+        android:id="@+id/action_about"
+        android:icon="@drawable/about"
+        android:title="Nápověda"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/action_add_player"
         android:icon="@drawable/add_player_icon"
-        android:title="Odstranit"
+        android:title="Přidat hráče"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_delete"
+        android:icon="@drawable/delete_group_icon"
+        android:title="Odstranit skupinu"
         app:showAsAction="always" />
 
 </menu>

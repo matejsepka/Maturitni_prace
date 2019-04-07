@@ -6,6 +6,8 @@ import android.app.DatePickerDialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
@@ -121,10 +123,5 @@ public class PlayerDetailActivity extends AppCompatActivity {
                 textDOB.setText(sdf.format(date));
             }
         };
-
-
-
-
-
     }
 }

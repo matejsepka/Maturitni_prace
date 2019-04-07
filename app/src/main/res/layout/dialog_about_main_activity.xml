@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hlavní stránka"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hlavní stránka je rozdělena do dvou částí mezi, kterými je možné se volně pohybovat tahnutím vlevo či vpravo."/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Skupiny"
+                    android:textSize="25sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="V této části můžete vidět všechny své skupiny. Kliknutím na skupinu se vám otevře její detailní stránka (přehled všech hráčů, docházka atd..). Skupinu můžete přidat kliknutím na kulaté tlačítko s pluskem v pravém dolním rohu obrazovky."/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cvičení"
+                    android:textSize="25sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Zde jsou vypsána všechna cvičení, která jste si vytvořili. Stejně jako u skupin se kliknutím na dané cvičení dostanete na jeho detailní stránku. V případě kliknutí na kulaté políčko s pluskem v pravém dolním rohu obrazovky, můžete nové cvičení přidat."/>
+
+        </LinearLayout>
+</ScrollView>

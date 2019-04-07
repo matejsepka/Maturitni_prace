@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Detailní náhled Skupiny"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Na této stránce můžete spravovat svoji skupiny. Kliknutí na obrázek hráče s plusem v pravém horním rohu obrazovky přidáte nového člena skupiny. Všechny členy můžete vidět vypsané uprostřed stránky. Na jadnotlivé hráče je též možné kliknout a tím zobrazit jejich detailní náhled. Delším podržením pak můžete hráče ze skupiny odstranit. Kliknutím na kulaté tlačítko v pravém dolním rohu se vám zobrazí kalendář s docházkou. Nakonec kliknutím na obrázek popelničky v pravém horním rohu je možné celou skupinu odstranit."/>
+        </LinearLayout>
+</ScrollView>

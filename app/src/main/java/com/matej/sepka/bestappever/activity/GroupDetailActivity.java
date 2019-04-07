@@ -20,6 +20,7 @@ import com.matej.sepka.bestappever.database.AppDatabase;
 import com.matej.sepka.bestappever.database.Group;
 import com.matej.sepka.bestappever.R;
 import com.matej.sepka.bestappever.database.Player;
+import com.matej.sepka.bestappever.dialog.AboutDialogGroupDetailActivity;
 import com.matej.sepka.bestappever.dialog.AddPlayerDialog;
 import com.matej.sepka.bestappever.dialog.PlayerDialogListener;
 import com.matej.sepka.bestappever.dialog.DeleteGroupDialog;
@@ -114,6 +115,9 @@ public class GroupDetailActivity extends AppCompatActivity implements PlayerDial
             case R.id.action_add_player:
                 showAddPlayerDialog();
                 break;
+            case R.id.action_about:
+                showAboutDialog();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -136,6 +140,11 @@ public class GroupDetailActivity extends AppCompatActivity implements PlayerDial
         AddPlayerDialog addPlayerDialog = new AddPlayerDialog();
         addPlayerDialog.setArguments(bundle);
         addPlayerDialog.show(getSupportFragmentManager(), "add_player_dialog");
+    }
+
+    private void showAboutDialog() {
+        AboutDialogGroupDetailActivity aboutDialog = new AboutDialogGroupDetailActivity();
+        aboutDialog.show(getSupportFragmentManager(), "dialog_about");
     }
 
     //Odkaz na update po přidání hráče

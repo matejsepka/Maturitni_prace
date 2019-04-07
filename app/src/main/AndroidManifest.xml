@@ -9,11 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.AnimationWatchActivity"></activity>
-        <activity android:name=".activity.AnimationCreatorActivity" />
-        <activity android:name=".activity.PlayerDetailActivity" />
-        <activity android:name=".activity.AttendanceDetailActivity" />
-        <activity android:name=".activity.AttendanceActivity" />
+        <activity
+            android:name=".activity.AnimationWatchActivity"
+            android:parentActivityName=".activity.GameSituationDetailActivity"/>
+        <activity
+            android:name=".activity.AnimationCreatorActivity"
+            android:parentActivityName=".activity.GameSituationDetailActivity"/>
+        <activity
+            android:name=".activity.PlayerDetailActivity"
+            android:parentActivityName=".activity.GroupDetailActivity"/>
+        <activity
+            android:name=".activity.AttendanceDetailActivity"
+            android:parentActivityName=".activity.AttendanceActivity"/>
+        <activity
+            android:name=".activity.AttendanceActivity"
+            android:parentActivityName=".activity.GroupDetailActivity"/>
         <activity
             android:name=".activity.GameSituationDetailActivity"
             android:label="Cvičení"
@@ -24,10 +34,6 @@
         <activity
             android:name=".activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".activity.SettingsActivity"
-            android:label="@string/nastaveni"
-            android:parentActivityName=".activity.MainActivity" />
         <activity
             android:name=".Splash"
             android:theme="@style/AppTheme.NoActionBar">
