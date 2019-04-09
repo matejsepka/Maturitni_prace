@@ -14,6 +14,7 @@
         android:layout_centerHorizontal="true"
         android:background="@android:drawable/ic_media_play" />
 
+
     <ImageView
         android:id="@+id/player_one_img"
         android:layout_width="wrap_content"

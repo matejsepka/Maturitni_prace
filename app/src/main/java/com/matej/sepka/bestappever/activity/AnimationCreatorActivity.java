@@ -22,60 +22,110 @@ public class AnimationCreatorActivity extends AppCompatActivity {
 
     private int frameCount = 0;
 
-    private float playerOneX1;
-    private float playerOneY1;
-    private float playerOneX2;
-    private float playerOneY2;
-    private float playerOneX3;
-    private float playerOneY3;
-    private float playerOneX4;
-    private float playerOneY4;
-    private float playerOneX5;
-    private float playerOneY5;
+    private float playerOneX1 = 0;
+    private float playerOneY1 = 0;
+    private float playerOneX2 = 0;
+    private float playerOneY2 = 0;
+    private float playerOneX3 = 0;
+    private float playerOneY3 = 0;
+    private float playerOneX4 = 0;
+    private float playerOneY4 = 0;
+    private float playerOneX5 = 0;
+    private float playerOneY5 = 0;
+    private float playerOneX6 = 0;
+    private float playerOneY6 = 0;
+    private float playerOneX7 = 0;
+    private float playerOneY7 = 0;
+    private float playerOneX8 = 0;
+    private float playerOneY8 = 0;
+    private float playerOneX9 = 0;
+    private float playerOneY9 = 0;
+    private float playerOneX10 = 0;
+    private float playerOneY10 = 0;
 
-    private float playerTwoX1;
-    private float playerTwoY1;
-    private float playerTwoX2;
-    private float playerTwoY2;
-    private float playerTwoX3;
-    private float playerTwoY3;
-    private float playerTwoX4;
-    private float playerTwoY4;
-    private float playerTwoX5;
-    private float playerTwoY5;
+    private float playerTwoX1 = 0;
+    private float playerTwoY1 = 0;
+    private float playerTwoX2 = 0;
+    private float playerTwoY2 = 0;
+    private float playerTwoX3 = 0;
+    private float playerTwoY3 = 0;
+    private float playerTwoX4 = 0;
+    private float playerTwoY4 = 0;
+    private float playerTwoX5 = 0;
+    private float playerTwoY5 = 0;
+    private float playerTwoX6 = 0;
+    private float playerTwoY6 = 0;
+    private float playerTwoX7 = 0;
+    private float playerTwoY7 = 0;
+    private float playerTwoX8 = 0;
+    private float playerTwoY8 = 0;
+    private float playerTwoX9 = 0;
+    private float playerTwoY9 = 0;
+    private float playerTwoX10 = 0;
+    private float playerTwoY10 = 0;
 
-    private float playerThreeX1;
-    private float playerThreeY1;
-    private float playerThreeX2;
-    private float playerThreeY2;
-    private float playerThreeX3;
-    private float playerThreeY3;
-    private float playerThreeX4;
-    private float playerThreeY4;
-    private float playerThreeX5;
-    private float playerThreeY5;
+    private float playerThreeX1 = 0;
+    private float playerThreeY1 = 0;
+    private float playerThreeX2 = 0;
+    private float playerThreeY2 = 0;
+    private float playerThreeX3 = 0;
+    private float playerThreeY3 = 0;
+    private float playerThreeX4 = 0;
+    private float playerThreeY4 = 0;
+    private float playerThreeX5 = 0;
+    private float playerThreeY5 = 0;
+    private float playerThreeX6 = 0;
+    private float playerThreeY6 = 0;
+    private float playerThreeX7 = 0;
+    private float playerThreeY7 = 0;
+    private float playerThreeX8 = 0;
+    private float playerThreeY8 = 0;
+    private float playerThreeX9 = 0;
+    private float playerThreeY9 = 0;
+    private float playerThreeX10 = 0;
+    private float playerThreeY10 = 0;
 
-    private float playerFourX1;
-    private float playerFourY1;
-    private float playerFourX2;
-    private float playerFourY2;
-    private float playerFourX3;
-    private float playerFourY3;
-    private float playerFourX4;
-    private float playerFourY4;
-    private float playerFourX5;
-    private float playerFourY5;
+    private float playerFourX1 = 0;
+    private float playerFourY1 = 0;
+    private float playerFourX2 = 0;
+    private float playerFourY2 = 0;
+    private float playerFourX3 = 0;
+    private float playerFourY3 = 0;
+    private float playerFourX4 = 0;
+    private float playerFourY4 = 0;
+    private float playerFourX5 = 0;
+    private float playerFourY5 = 0;
+    private float playerFourX6 = 0;
+    private float playerFourY6 = 0;
+    private float playerFourX7 = 0;
+    private float playerFourY7 = 0;
+    private float playerFourX8 = 0;
+    private float playerFourY8 = 0;
+    private float playerFourX9 = 0;
+    private float playerFourY9 = 0;
+    private float playerFourX10 = 0;
+    private float playerFourY10 = 0;
 
-    private float ballOneX1;
-    private float ballOneY1;
-    private float ballOneX2;
-    private float ballOneY2;
-    private float ballOneX3;
-    private float ballOneY3;
-    private float ballOneX4;
-    private float ballOneY4;
-    private float ballOneX5;
-    private float ballOneY5;
+    private float ballOneX1 = 0;
+    private float ballOneY1 = 0;
+    private float ballOneX2 = 0;
+    private float ballOneY2 = 0;
+    private float ballOneX3 = 0;
+    private float ballOneY3 = 0;
+    private float ballOneX4 = 0;
+    private float ballOneY4 = 0;
+    private float ballOneX5 = 0;
+    private float ballOneY5 = 0;
+    private float ballOneX6 = 0;
+    private float ballOneY6 = 0;
+    private float ballOneX7 = 0;
+    private float ballOneY7 = 0;
+    private float ballOneX8 = 0;
+    private float ballOneY8 = 0;
+    private float ballOneX9 = 0;
+    private float ballOneY9 = 0;
+    private float ballOneX10 = 0;
+    private float ballOneY10 = 0;
 
 
 
@@ -91,7 +141,8 @@ public class AnimationCreatorActivity extends AppCompatActivity {
         final ImageView imageBallOne = findViewById(R.id.ball_one_img);
         final ImageView imagePlayerThree = findViewById(R.id.player_three_img);
         final ImageView imagePlayerFour = findViewById(R.id.player_four_img);
-        Button nextFrameButton = findViewById(R.id.next_frame_btn);
+        Button nextFrameBtn = findViewById(R.id.next_frame_btn);
+        Button saveBtn = findViewById(R.id.save_btn);
 
         RelativeLayout.LayoutParams layoutParams1 = new RelativeLayout.LayoutParams(70, 70);
         imagePlayerOne.setLayoutParams(layoutParams1);
@@ -123,74 +174,81 @@ public class AnimationCreatorActivity extends AppCompatActivity {
         imagePlayerFour.setY(1040);
         imagePlayerFour.setOnTouchListener(new PlayerFourTouchListener());
 
-        nextFrameButton.setOnClickListener(new View.OnClickListener() {
+        nextFrameBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (frameCount) {
+                    case 10:
+                        Toast.makeText(getApplicationContext(),"Již máte maximální počet obrázků v animaci! Klikněte na tlačítko pro uložení.", Toast.LENGTH_LONG).show();
+                        break;
+                    case 9:
+                        playerOneX10 = imagePlayerOne.getX();
+                        playerOneY10 = imagePlayerOne.getY();
+                        playerTwoX10 = imagePlayerTwo.getX();
+                        playerTwoY10 = imagePlayerTwo.getY();
+                        playerThreeX10 = imagePlayerThree.getX();
+                        playerThreeY10 = imagePlayerThree.getY();
+                        playerFourX10 = imagePlayerFour.getX();
+                        playerFourY10 = imagePlayerFour.getY();
+                        ballOneX10 = imageBallOne.getX();
+                        ballOneY10 = imageBallOne.getY();
+                        Toast.makeText(getApplicationContext(),"Desátý obrázek animace byl vytvořen.", Toast.LENGTH_LONG).show();
+                        frameCount++;
+                        break;
+                    case 8:
+                        playerOneX9 = imagePlayerOne.getX();
+                        playerOneY9 = imagePlayerOne.getY();
+                        playerTwoX9 = imagePlayerTwo.getX();
+                        playerTwoY9 = imagePlayerTwo.getY();
+                        playerThreeX9 = imagePlayerThree.getX();
+                        playerThreeY9 = imagePlayerThree.getY();
+                        playerFourX9 = imagePlayerFour.getX();
+                        playerFourY9 = imagePlayerFour.getY();
+                        ballOneX9 = imageBallOne.getX();
+                        ballOneY9 = imageBallOne.getY();
+                        Toast.makeText(getApplicationContext(),"Devátý obrázek animace byl vytvořen.", Toast.LENGTH_LONG).show();
+                        frameCount++;
+                        break;
+                    case 7:
+                        playerOneX8 = imagePlayerOne.getX();
+                        playerOneY8 = imagePlayerOne.getY();
+                        playerTwoX8 = imagePlayerTwo.getX();
+                        playerTwoY8 = imagePlayerTwo.getY();
+                        playerThreeX8 = imagePlayerThree.getX();
+                        playerThreeY8 = imagePlayerThree.getY();
+                        playerFourX8 = imagePlayerFour.getX();
+                        playerFourY8 = imagePlayerFour.getY();
+                        ballOneX8 = imageBallOne.getX();
+                        ballOneY8 = imageBallOne.getY();
+                        Toast.makeText(getApplicationContext(),"Osmý obrázek animace byl vytvořen.", Toast.LENGTH_LONG).show();
+                        frameCount++;
+                        break;
                     case 6:
-                        AppDatabase appDatabase = AppDatabase.getInstance(getApplication());
-                        Animation animation = new Animation();
-                        animation.setName(gameSituation.getName());
-                        animation.setPlayerOneX1(playerOneX1);
-                        animation.setPlayerOneY1(playerOneY1);
-                        animation.setPlayerOneX2(playerOneX2);
-                        animation.setPlayerOneY2(playerOneY2);
-                        animation.setPlayerOneX3(playerOneX3);
-                        animation.setPlayerOneY3(playerOneY3);
-                        animation.setPlayerOneX4(playerOneX4);
-                        animation.setPlayerOneY4(playerOneY4);
-                        animation.setPlayerOneX5(playerOneX5);
-                        animation.setPlayerOneY5(playerOneY5);
-
-                        animation.setPlayerTwoX1(playerTwoX1);
-                        animation.setPlayerTwoY1(playerTwoY1);
-                        animation.setPlayerTwoX2(playerTwoX2);
-                        animation.setPlayerTwoY2(playerTwoY2);
-                        animation.setPlayerTwoX3(playerTwoX3);
-                        animation.setPlayerTwoY3(playerTwoY3);
-                        animation.setPlayerTwoX4(playerTwoX4);
-                        animation.setPlayerTwoY4(playerTwoY4);
-                        animation.setPlayerTwoX5(playerTwoX5);
-                        animation.setPlayerTwoY5(playerTwoY5);
-
-                        animation.setPlayerThreeX1(playerThreeX1);
-                        animation.setPlayerThreeY1(playerThreeY1);
-                        animation.setPlayerThreeX2(playerThreeX2);
-                        animation.setPlayerThreeY2(playerThreeY2);
-                        animation.setPlayerThreeX3(playerThreeX3);
-                        animation.setPlayerThreeY3(playerThreeY3);
-                        animation.setPlayerThreeX4(playerThreeX4);
-                        animation.setPlayerThreeY4(playerThreeY4);
-                        animation.setPlayerThreeX5(playerThreeX5);
-                        animation.setPlayerThreeY5(playerThreeY5);
-
-                        animation.setPlayerFourX1(playerFourX1);
-                        animation.setPlayerFourY1(playerFourY1);
-                        animation.setPlayerFourX2(playerFourX2);
-                        animation.setPlayerFourY2(playerFourY2);
-                        animation.setPlayerFourX3(playerFourX3);
-                        animation.setPlayerFourY3(playerFourY3);
-                        animation.setPlayerFourX4(playerFourX4);
-                        animation.setPlayerFourY4(playerFourY4);
-                        animation.setPlayerFourX5(playerFourX5);
-                        animation.setPlayerFourY5(playerFourY5);
-
-                        animation.setBallOneX1(ballOneX1);
-                        animation.setBallOneY1(ballOneY1);
-                        animation.setBallOneX2(ballOneX2);
-                        animation.setBallOneY2(ballOneY2);
-                        animation.setBallOneX3(ballOneX3);
-                        animation.setBallOneY3(ballOneY3);
-                        animation.setBallOneX4(ballOneX4);
-                        animation.setBallOneY4(ballOneY4);
-                        animation.setBallOneX5(ballOneX5);
-                        animation.setBallOneY5(ballOneY5);
-
-                        appDatabase.getAnimationDao().insert(animation);
-                        finish();
+                        playerOneX7 = imagePlayerOne.getX();
+                        playerOneY7 = imagePlayerOne.getY();
+                        playerTwoX7 = imagePlayerTwo.getX();
+                        playerTwoY7 = imagePlayerTwo.getY();
+                        playerThreeX7 = imagePlayerThree.getX();
+                        playerThreeY7 = imagePlayerThree.getY();
+                        playerFourX7 = imagePlayerFour.getX();
+                        playerFourY7 = imagePlayerFour.getY();
+                        ballOneX7 = imageBallOne.getX();
+                        ballOneY7 = imageBallOne.getY();
+                        Toast.makeText(getApplicationContext(),"Sedmý obrázek animace byl vytvořen.", Toast.LENGTH_LONG).show();
+                        frameCount++;
                         break;
                     case 5:
-                        Toast.makeText(getApplicationContext(),"Již máte maximální počet obrázků v animaci! Klikněte ještě jednou pro uložení.", Toast.LENGTH_LONG).show();
+                        playerOneX6 = imagePlayerOne.getX();
+                        playerOneY6 = imagePlayerOne.getY();
+                        playerTwoX6 = imagePlayerTwo.getX();
+                        playerTwoY6 = imagePlayerTwo.getY();
+                        playerThreeX6 = imagePlayerThree.getX();
+                        playerThreeY6 = imagePlayerThree.getY();
+                        playerFourX6 = imagePlayerFour.getX();
+                        playerFourY6 = imagePlayerFour.getY();
+                        ballOneX6 = imageBallOne.getX();
+                        ballOneY6 = imageBallOne.getY();
+                        Toast.makeText(getApplicationContext(),"Šestý obrázek animace byl vytvořen.", Toast.LENGTH_LONG).show();
                         frameCount++;
                         break;
                     case 4:
@@ -267,6 +325,131 @@ public class AnimationCreatorActivity extends AppCompatActivity {
             }
         });
 
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (frameCount < 2) {
+                    Toast.makeText(getApplicationContext(),"Před uložením animace musíte nejprve vytvořit alespoň dva snímky!", Toast.LENGTH_LONG).show();
+                } else {
+                    saveAnimation();
+                    Toast.makeText(getApplicationContext(),"Animace byla uložena.", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+            }
+        });
+
+    }
+
+    private void saveAnimation() {
+        AppDatabase appDatabase = AppDatabase.getInstance(getApplication());
+        Animation animation = new Animation();
+        animation.setName(gameSituation.getName());
+        animation.setPlayerOneX1(playerOneX1);
+        animation.setPlayerOneY1(playerOneY1);
+        animation.setPlayerOneX2(playerOneX2);
+        animation.setPlayerOneY2(playerOneY2);
+        animation.setPlayerOneX3(playerOneX3);
+        animation.setPlayerOneY3(playerOneY3);
+        animation.setPlayerOneX4(playerOneX4);
+        animation.setPlayerOneY4(playerOneY4);
+        animation.setPlayerOneX5(playerOneX5);
+        animation.setPlayerOneY5(playerOneY5);
+        animation.setPlayerOneX6(playerOneX6);
+        animation.setPlayerOneY6(playerOneY6);
+        animation.setPlayerOneX7(playerOneX7);
+        animation.setPlayerOneY7(playerOneY7);
+        animation.setPlayerOneX8(playerOneX8);
+        animation.setPlayerOneY8(playerOneY8);
+        animation.setPlayerOneX9(playerOneX9);
+        animation.setPlayerOneY9(playerOneY9);
+        animation.setPlayerOneX10(playerOneX10);
+        animation.setPlayerOneY10(playerOneY10);
+
+        animation.setPlayerTwoX1(playerTwoX1);
+        animation.setPlayerTwoY1(playerTwoY1);
+        animation.setPlayerTwoX2(playerTwoX2);
+        animation.setPlayerTwoY2(playerTwoY2);
+        animation.setPlayerTwoX3(playerTwoX3);
+        animation.setPlayerTwoY3(playerTwoY3);
+        animation.setPlayerTwoX4(playerTwoX4);
+        animation.setPlayerTwoY4(playerTwoY4);
+        animation.setPlayerTwoX5(playerTwoX5);
+        animation.setPlayerTwoY5(playerTwoY5);
+        animation.setPlayerTwoX6(playerTwoX6);
+        animation.setPlayerTwoY6(playerTwoY6);
+        animation.setPlayerTwoX7(playerTwoX7);
+        animation.setPlayerTwoY7(playerTwoY7);
+        animation.setPlayerTwoX8(playerTwoX8);
+        animation.setPlayerTwoY8(playerTwoY8);
+        animation.setPlayerTwoX9(playerTwoX9);
+        animation.setPlayerTwoY9(playerTwoY9);
+        animation.setPlayerTwoX10(playerTwoX10);
+        animation.setPlayerTwoY10(playerTwoY10);
+
+        animation.setPlayerThreeX1(playerThreeX1);
+        animation.setPlayerThreeY1(playerThreeY1);
+        animation.setPlayerThreeX2(playerThreeX2);
+        animation.setPlayerThreeY2(playerThreeY2);
+        animation.setPlayerThreeX3(playerThreeX3);
+        animation.setPlayerThreeY3(playerThreeY3);
+        animation.setPlayerThreeX4(playerThreeX4);
+        animation.setPlayerThreeY4(playerThreeY4);
+        animation.setPlayerThreeX5(playerThreeX5);
+        animation.setPlayerThreeY5(playerThreeY5);
+        animation.setPlayerThreeX6(playerThreeX6);
+        animation.setPlayerThreeY6(playerThreeY6);
+        animation.setPlayerThreeX7(playerThreeX7);
+        animation.setPlayerThreeY7(playerThreeY7);
+        animation.setPlayerThreeX8(playerThreeX8);
+        animation.setPlayerThreeY8(playerThreeY8);
+        animation.setPlayerThreeX9(playerThreeX9);
+        animation.setPlayerThreeY9(playerThreeY9);
+        animation.setPlayerThreeX10(playerThreeX10);
+        animation.setPlayerThreeY10(playerThreeY10);
+
+        animation.setPlayerFourX1(playerFourX1);
+        animation.setPlayerFourY1(playerFourY1);
+        animation.setPlayerFourX2(playerFourX2);
+        animation.setPlayerFourY2(playerFourY2);
+        animation.setPlayerFourX3(playerFourX3);
+        animation.setPlayerFourY3(playerFourY3);
+        animation.setPlayerFourX4(playerFourX4);
+        animation.setPlayerFourY4(playerFourY4);
+        animation.setPlayerFourX5(playerFourX5);
+        animation.setPlayerFourY5(playerFourY5);
+        animation.setPlayerFourX6(playerFourX6);
+        animation.setPlayerFourY6(playerFourY6);
+        animation.setPlayerFourX7(playerFourX7);
+        animation.setPlayerFourY7(playerFourY7);
+        animation.setPlayerFourX8(playerFourX8);
+        animation.setPlayerFourY8(playerFourY8);
+        animation.setPlayerFourX9(playerFourX9);
+        animation.setPlayerFourY9(playerFourY9);
+        animation.setPlayerFourX10(playerFourX10);
+        animation.setPlayerFourY10(playerFourY10);
+
+        animation.setBallOneX1(ballOneX1);
+        animation.setBallOneY1(ballOneY1);
+        animation.setBallOneX2(ballOneX2);
+        animation.setBallOneY2(ballOneY2);
+        animation.setBallOneX3(ballOneX3);
+        animation.setBallOneY3(ballOneY3);
+        animation.setBallOneX4(ballOneX4);
+        animation.setBallOneY4(ballOneY4);
+        animation.setBallOneX5(ballOneX5);
+        animation.setBallOneY5(ballOneY5);
+        animation.setBallOneX6(ballOneX6);
+        animation.setBallOneY6(ballOneY6);
+        animation.setBallOneX7(ballOneX7);
+        animation.setBallOneY7(ballOneY7);
+        animation.setBallOneX8(ballOneX8);
+        animation.setBallOneY8(ballOneY8);
+        animation.setBallOneX9(ballOneX9);
+        animation.setBallOneY9(ballOneY9);
+        animation.setBallOneX10(ballOneX10);
+        animation.setBallOneY10(ballOneY10);
+
+        appDatabase.getAnimationDao().insert(animation);
     }
 
 

@@ -10,23 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.AnimationWatchActivity"
-            android:parentActivityName=".activity.GameSituationDetailActivity"/>
+            android:name=".activity.AnimationWatchActivity" />
         <activity
-            android:name=".activity.AnimationCreatorActivity"
-            android:parentActivityName=".activity.GameSituationDetailActivity"/>
+            android:name=".activity.AnimationCreatorActivity" />
         <activity
-            android:name=".activity.PlayerDetailActivity"
-            android:parentActivityName=".activity.GroupDetailActivity"/>
+            android:name=".activity.PlayerDetailActivity" />
         <activity
-            android:name=".activity.AttendanceDetailActivity"
-            android:parentActivityName=".activity.AttendanceActivity"/>
+            android:name=".activity.AttendanceDetailActivity" />
         <activity
-            android:name=".activity.AttendanceActivity"
-            android:parentActivityName=".activity.GroupDetailActivity"/>
+            android:name=".activity.AttendanceActivity" />
         <activity
             android:name=".activity.GameSituationDetailActivity"
-            android:label="Cvičení"
             android:parentActivityName=".activity.MainActivity" />
         <activity
             android:name=".activity.GroupDetailActivity"
