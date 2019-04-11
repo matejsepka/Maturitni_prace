@@ -1,6 +1,3 @@
 <resources>
-    <string name="app_name">Maturitní práce</string>
-    <string name="moje_treninky">Moje Tréninky</string>
-    <string name="moje_cviceni">Moje Cvičení</string>
-    <string name="nastaveni">Nastavení</string>
+    <string name="app_name">Beach Assistant</string>
 </resources>

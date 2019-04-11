@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.matej.sepka.bestappever.activity.AnimationCreatorActivity"
+    tools:context="com.matej.sepka.appPackage.activity.AnimationCreatorActivity"
     android:background="@drawable/volleyball_court_background">
 
     <ImageView

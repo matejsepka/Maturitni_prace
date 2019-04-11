@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.matej.sepka.bestappever.activity.AttendanceDetailActivity">
+    tools:context="com.matej.sepka.appPackage.activity.AttendanceDetailActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/attendance_player_recycler_view"

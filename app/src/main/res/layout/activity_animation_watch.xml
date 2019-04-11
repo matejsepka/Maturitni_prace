@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.matej.sepka.bestappever.activity.AnimationWatchActivity"
+    tools:context="com.matej.sepka.appPackage.activity.AnimationWatchActivity"
     android:background="@drawable/volleyball_court_background">
 
     <Button

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.matej.sepka.bestappever">
+    package="com.matej.sepka.appPackage">
 
     <application
         android:allowBackup="true"
@@ -10,26 +10,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.AnimationWatchActivity" />
+            android:name="com.matej.sepka.appPackage.activity.AnimationWatchActivity" />
         <activity
-            android:name=".activity.AnimationCreatorActivity" />
+            android:name="com.matej.sepka.appPackage.activity.AnimationCreatorActivity" />
         <activity
-            android:name=".activity.PlayerDetailActivity" />
+            android:name="com.matej.sepka.appPackage.activity.PlayerDetailActivity" />
         <activity
-            android:name=".activity.AttendanceDetailActivity" />
+            android:name="com.matej.sepka.appPackage.activity.AttendanceDetailActivity" />
         <activity
-            android:name=".activity.AttendanceActivity" />
+            android:name="com.matej.sepka.appPackage.activity.AttendanceActivity" />
         <activity
-            android:name=".activity.GameSituationDetailActivity"
-            android:parentActivityName=".activity.MainActivity" />
+            android:name="com.matej.sepka.appPackage.activity.GameSituationDetailActivity"
+            android:parentActivityName="com.matej.sepka.appPackage.activity.MainActivity" />
         <activity
-            android:name=".activity.GroupDetailActivity"
-            android:parentActivityName=".activity.MainActivity" />
+            android:name="com.matej.sepka.appPackage.activity.GroupDetailActivity"
+            android:parentActivityName="com.matej.sepka.appPackage.activity.MainActivity" />
         <activity
-            android:name=".activity.MainActivity"
+            android:name="com.matej.sepka.appPackage.activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Splash"
+            android:name="com.matej.sepka.appPackage.Splash"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
