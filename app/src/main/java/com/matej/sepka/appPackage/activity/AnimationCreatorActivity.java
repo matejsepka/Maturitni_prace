@@ -3,6 +3,8 @@ package com.matej.sepka.appPackage.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +16,7 @@ import com.matej.sepka.appPackage.R;
 import com.matej.sepka.appPackage.database.Animation;
 import com.matej.sepka.appPackage.database.AppDatabase;
 import com.matej.sepka.appPackage.database.GameSituation;
+import com.matej.sepka.appPackage.dialog.AboutDialogAnimationCreatorActivity;
 
 public class AnimationCreatorActivity extends AppCompatActivity {
     private GameSituation gameSituation;
@@ -318,6 +321,21 @@ public class AnimationCreatorActivity extends AppCompatActivity {
                         playerFourY1 = imagePlayerFour.getY();
                         ballOneX1 = imageBallOne.getX();
                         ballOneY1 = imageBallOne.getY();
+                        if (playerOneX1 == 50 && playerOneY1 == 1040) {
+                            imagePlayerOne.setVisibility(View.INVISIBLE);
+                        }
+                        if (playerTwoX1 == 150 && playerTwoY1 == 1040) {
+                            imagePlayerTwo.setVisibility(View.INVISIBLE);
+                        }
+                        if (playerThreeX1 == 250 && playerThreeY1 == 1040) {
+                            imagePlayerThree.setVisibility(View.INVISIBLE);
+                        }
+                        if (playerFourX1 == 350 && playerFourY1 == 1040) {
+                            imagePlayerFour.setVisibility(View.INVISIBLE);
+                        }
+                        if (ballOneX1 == 450 && ballOneY1 == 1050) {
+                            imageBallOne.setVisibility(View.INVISIBLE);
+                        }
                         Toast.makeText(getApplicationContext(),"První obrázek animace byl vytvořen.", Toast.LENGTH_LONG).show();
                         frameCount++;
                         break;
@@ -450,6 +468,27 @@ public class AnimationCreatorActivity extends AppCompatActivity {
         animation.setBallOneY10(ballOneY10);
 
         appDatabase.getAnimationDao().insert(animation);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_about:
+                showAboutDialog();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void showAboutDialog() {
+        AboutDialogAnimationCreatorActivity aboutDialog = new AboutDialogAnimationCreatorActivity();
+        aboutDialog.show(getSupportFragmentManager(), "dialog_fragment_about");
     }
 
 

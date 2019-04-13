@@ -14,6 +14,7 @@ import com.matej.sepka.appPackage.R;
 import com.matej.sepka.appPackage.database.Animation;
 import com.matej.sepka.appPackage.database.AppDatabase;
 import com.matej.sepka.appPackage.database.GameSituation;
+import com.matej.sepka.appPackage.dialog.AboutDialogGameSituationDetailActivity;
 import com.matej.sepka.appPackage.dialog.DeleteGameSituationDialog;
 
 import java.util.List;
@@ -136,6 +137,9 @@ public class GameSituationDetailActivity extends AppCompatActivity {
             case R.id.action_delete:
                 showDeleteDialog();
                 break;
+            case R.id.action_about:
+                showAboutDialog();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -146,5 +150,10 @@ public class GameSituationDetailActivity extends AppCompatActivity {
         DeleteGameSituationDialog deleteGameSituationDialog = new DeleteGameSituationDialog();
         deleteGameSituationDialog.setArguments(bundle);
         deleteGameSituationDialog.show(getSupportFragmentManager(), "delete_game_situation_dialog");
+    }
+
+    private void showAboutDialog() {
+        AboutDialogGameSituationDetailActivity aboutDialog = new AboutDialogGameSituationDetailActivity();
+        aboutDialog.show(getSupportFragmentManager(), "dialog_fragment_about");
     }
 }

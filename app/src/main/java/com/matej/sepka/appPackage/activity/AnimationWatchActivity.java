@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -14,6 +16,7 @@ import com.matej.sepka.appPackage.R;
 import com.matej.sepka.appPackage.database.Animation;
 import com.matej.sepka.appPackage.database.AppDatabase;
 import com.matej.sepka.appPackage.database.GameSituation;
+import com.matej.sepka.appPackage.dialog.AboutDialogAnimationWatchActivity;
 
 import java.util.List;
 
@@ -54,22 +57,37 @@ public class AnimationWatchActivity extends AppCompatActivity {
         imgPlayerOne.setLayoutParams(layoutParamsPlayer);
         imgPlayerOne.setX(animation.getPlayerOneX1());
         imgPlayerOne.setY(animation.getPlayerOneY1());
+        if (animation.getPlayerOneX1() == 50 && animation.getPlayerOneY1() == 1040) {
+            imgPlayerOne.setVisibility(View.INVISIBLE);
+        }
 
         imgPlayerTwo.setLayoutParams(layoutParamsPlayer);
         imgPlayerTwo.setX(animation.getPlayerTwoX1());
         imgPlayerTwo.setY(animation.getPlayerTwoY1());
+        if (animation.getPlayerTwoX1() == 150 && animation.getPlayerTwoY1() == 1040) {
+            imgPlayerTwo.setVisibility(View.INVISIBLE);
+        }
 
         imgPlayerThree.setLayoutParams(layoutParamsPlayer);
         imgPlayerThree.setX(animation.getPlayerThreeX1());
         imgPlayerThree.setY(animation.getPlayerThreeY1());
+        if (animation.getPlayerThreeX1() == 250 && animation.getPlayerThreeY1() == 1040) {
+            imgPlayerThree.setVisibility(View.INVISIBLE);
+        }
 
         imgPlayerFour.setLayoutParams(layoutParamsPlayer);
         imgPlayerFour.setX(animation.getPlayerFourX1());
         imgPlayerFour.setY(animation.getPlayerFourY1());
+        if (animation.getPlayerFourX1() == 350 && animation.getPlayerFourY1() == 1040) {
+            imgPlayerFour.setVisibility(View.INVISIBLE);
+        }
 
         imgBallOne.setLayoutParams(layoutParamsBall);
         imgBallOne.setX(animation.getBallOneX1());
         imgBallOne.setY(animation.getBallOneY1());
+        if (animation.getBallOneX1() == 450 && animation.getBallOneY1() == 1050) {
+            imgBallOne.setVisibility(View.INVISIBLE);
+        }
 
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +107,27 @@ public class AnimationWatchActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_about:
+                showAboutDialog();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void showAboutDialog() {
+        AboutDialogAnimationWatchActivity aboutDialog = new AboutDialogAnimationWatchActivity();
+        aboutDialog.show(getSupportFragmentManager(), "dialog_fragment_about");
     }
 
     private void playAnimation() {

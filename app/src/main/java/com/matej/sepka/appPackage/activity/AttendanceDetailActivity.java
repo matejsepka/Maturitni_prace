@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -16,6 +18,7 @@ import com.matej.sepka.appPackage.R;
 import com.matej.sepka.appPackage.database.AppDatabase;
 import com.matej.sepka.appPackage.database.Attendance;
 import com.matej.sepka.appPackage.database.Training;
+import com.matej.sepka.appPackage.dialog.AboutDialogAttendanceDetailActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -51,6 +54,27 @@ public class AttendanceDetailActivity extends AppCompatActivity {
         attendanceAdapter = new AttendanceAdapter(listAttendance);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(attendanceAdapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_about:
+                showAboutDialog();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void showAboutDialog() {
+        AboutDialogAttendanceDetailActivity aboutDialog = new AboutDialogAttendanceDetailActivity();
+        aboutDialog.show(getSupportFragmentManager(), "dialog_fragment_about");
     }
 
     private class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.AttendanceViewHolder> {

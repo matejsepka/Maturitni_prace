@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Vytváření animací"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pohyb s obrázky"
+                    android:textSize="25sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="V levém dolním rohu máte k dispozici 4 obrázky hráčů a jeden obrázek míče. Podržením a tažením můžete obrázky posouvat po celé obrazovce. A vložit je tak na hriště, které představuje obrázek uprostřed obrazovky. (Není nutné použít všechny obrázky, pokud s obrázkem v prvním kroku nepohnete, obrázek zmizí)"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ukládání"
+                    android:textSize="25sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=" Jakmile budete s polohou obrázků spokojeni, klikněte na šipku v pravém dolním rohu obrazovky, tím se uloží aktuální pozice obrázků jakožto první krok. Takto můžete postupovat dokud nebudete s animací spokojeni, pak klikněte na tlačítko uložit."/>
+
+        </LinearLayout>
+</ScrollView>

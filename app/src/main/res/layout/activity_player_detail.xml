@@ -40,7 +40,8 @@
         android:textColor="@color/colorTextPrimary"
         android:layout_margin="15dp"
         android:layout_alignParentEnd="true"
-        android:hint="Přidat"/>
+        android:hint="Přidat"
+        android:textColorHint="@color/colorTextSecondary"/>
 
     <TextView
         android:id="@+id/text_3"
