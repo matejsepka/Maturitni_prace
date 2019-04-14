@@ -13,11 +13,14 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 public class AboutDialogGameSituationDetailActivity extends AppCompatDialogFragment {
 
+    //on Create dialog
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        //builder
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
+        //nastavení layoutu
         View view = View.inflate(getContext(), R.layout.dialog_about_game_situation_detail_activity, null);
 
         builder.setView(view)

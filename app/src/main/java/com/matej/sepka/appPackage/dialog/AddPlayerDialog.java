@@ -22,10 +22,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 public class AddPlayerDialog extends BottomSheetDialogFragment {
+    //implementace proměnných
     private PlayerDialogListener listener;
     private Group group;
     private EditText editPlayerName;
 
+    //listner
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -36,31 +38,39 @@ public class AddPlayerDialog extends BottomSheetDialogFragment {
         }
     }
 
+    //layout
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.dialog_add_player, container, false);
     }
 
+    //on Create
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        //odkazy
         editPlayerName = view.findViewById(R.id.edit_player_name);
         Button buttonSave = view.findViewById(R.id.button_save);
         group = (Group) getArguments().getSerializable("group");
 
+        //tlačítko pro uložení
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Player player = new Player();
-                String groupName = group.getName();
+                //jméno hráče
                 player.setName(editPlayerName.getText().toString());
-                player.setGroup(groupName);
+                //příslušná skupina
+                player.setGroup(group.getName());
+                //datum narození
                 player.setDateOfBirth(0);
 
+                //uložení do databáze
                 AppDatabase appDatabase = AppDatabase.getInstance(getActivity().getApplication());
                 appDatabase.getPlayerDao().insert(player);
 
+                //Vytvoření docházky a její uložení do databáze
                 List<Training> AllTrainingsList = appDatabase.getTrainingDao().getall();
                 for (int i = 0; i < AllTrainingsList.size(); i++) {
                     Training training = AllTrainingsList.get(i);
@@ -73,6 +83,7 @@ public class AddPlayerDialog extends BottomSheetDialogFragment {
                     }
                 }
 
+                //listener odešle data do GroupDetailActivity
                 listener.addPlayer(player);
                 dismiss();
             }

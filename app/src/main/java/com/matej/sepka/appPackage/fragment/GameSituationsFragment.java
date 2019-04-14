@@ -23,36 +23,44 @@ import androidx.recyclerview.widget.RecyclerView;
 public class GameSituationsFragment extends Fragment {
     private GameSituationsAdapter gameSituationsAdapter;
 
+    //metoda při opětovném spuštění
     @Override
     public void onResume() {
         super.onResume();
+        //update seznamu
         AppDatabase appDatabase = AppDatabase.getInstance(getActivity().getApplication());
         List<GameSituation> listGameSituations = appDatabase.getGameSituationDao().getAll();
         gameSituationsAdapter.updateList(listGameSituations);
     }
 
+    //layout
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_game_situations, container, false);
     }
 
+    //on Create
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        //odkazy
         RecyclerView recyclerView = view.findViewById(R.id.list_game_situations);
         AppDatabase appDatabase = AppDatabase.getInstance(getActivity().getApplication());
         List<GameSituation> listGameSituations = appDatabase.getGameSituationDao().getAll();
 
+        //adapter
         gameSituationsAdapter = new GameSituationsAdapter(listGameSituations);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(gameSituationsAdapter);
     }
 
+    //přidání cvičení
     public void addGameSituation(GameSituation gameSituation) {
         gameSituationsAdapter.addItem(gameSituation);
     }
 
+    //třída recyclerview adapteru
     private class GameSituationsAdapter extends RecyclerView.Adapter<GameSituationsAdapter.GameSituationsViewHolder> {
         private List<GameSituation> listGameSituations;
 
@@ -60,16 +68,19 @@ public class GameSituationsFragment extends Fragment {
             this.listGameSituations = listGameSituations;
         }
 
+        //přidání položky
         void addItem(GameSituation gameSituation) {
             listGameSituations.add(gameSituation);
             notifyDataSetChanged();
         }
 
+        //update seznamu
         void updateList(List<GameSituation> listGameSituations) {
             this.listGameSituations = listGameSituations;
             notifyDataSetChanged();
         }
 
+        //Začátek celého procesu (odkaz na layout itemů)
         @NonNull
         @Override
         public GameSituationsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -77,6 +88,7 @@ public class GameSituationsFragment extends Fragment {
             return new GameSituationsViewHolder(view);
         }
 
+        //Opakující se metoda pro přiřazování itemů k polím v RecyclerView
         @Override
         public void onBindViewHolder(@NonNull GameSituationsViewHolder holder, int position) {
             final GameSituation gameSituation = listGameSituations.get(position);
@@ -93,11 +105,13 @@ public class GameSituationsFragment extends Fragment {
             });
         }
 
+        //Počet opakování
         @Override
         public int getItemCount() {
             return listGameSituations.size();
         }
 
+        //Samotné vepsání textu do RecyclerView
         class GameSituationsViewHolder extends RecyclerView.ViewHolder {
             TextView textName;
 

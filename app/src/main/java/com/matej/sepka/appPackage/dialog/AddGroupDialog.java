@@ -21,6 +21,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 public class AddGroupDialog extends BottomSheetDialogFragment {
+    //implementace proměnných
     private AddDialogListener listener;
     private final long secondsInDay = 86400;
     private EditText editGroupName;
@@ -44,9 +45,9 @@ public class AddGroupDialog extends BottomSheetDialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        //odkazy
         editGroupName = view.findViewById(R.id.edit_group_name);
         Button buttonSave = view.findViewById(R.id.button_save);
-
         final Switch mondaySwitch = view.findViewById(R.id.monday_switch);
         final Switch tuesdaySwitch = view.findViewById(R.id.tuesday_switch);
         final Switch wednesdaySwitch = view.findViewById(R.id.wednesday_switch);
@@ -55,6 +56,7 @@ public class AddGroupDialog extends BottomSheetDialogFragment {
         final Switch saturdaySwitch = view.findViewById(R.id.saturday_switch);
         final Switch sundaySwitch = view.findViewById(R.id.sunday_switch);
 
+        //tlačítko pro uložení
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,14 +65,13 @@ public class AddGroupDialog extends BottomSheetDialogFragment {
 
                 Group group = new Group();
                 group.setName(editGroupName.getText().toString());
-
                 AppDatabase appDatabase = AppDatabase.getInstance(getActivity().getApplication());
                 appDatabase.getGroupDao().insert(group);
 
+                //listener pošle skupinu do fragmentu
                 listener.addGroup(group);
 
-                //Vložení dat
-
+                //pomocné proměnné
                 Date today = new Date();
                 today.setHours(0);
                 today.setMinutes(0);
@@ -79,8 +80,7 @@ public class AddGroupDialog extends BottomSheetDialogFragment {
                 long inOneYearSeconds = todaySeconds + (31536000);
                 long todayDays = (todaySeconds + 3600) / secondsInDay;
 
-                
-
+                //uložení tréninků podle vybraných dnů
                 if (mondaySwitch.isChecked()) {
                     long helper = todaySeconds;
 

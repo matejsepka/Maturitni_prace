@@ -13,11 +13,14 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 public class AboutDialogMainActivity extends AppCompatDialogFragment {
 
+    //on Create dialog
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        //builder
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
+        //nasstavení layoutu
         View view = View.inflate(getContext(), R.layout.dialog_about_main_activity, null);
 
         builder.setView(view)

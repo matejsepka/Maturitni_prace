@@ -19,8 +19,8 @@ import androidx.annotation.Nullable;
 
 public class AddGameSituationDialog extends BottomSheetDialogFragment {
 
+    //implementace proměnných
     private AddDialogListener listener;
-
     private EditText editGameSituationName;
     private EditText editGameSituationDescription;
     private Switch beginnerSwitch;
@@ -31,6 +31,7 @@ public class AddGameSituationDialog extends BottomSheetDialogFragment {
     private Switch receiveSwitch;
     private Switch serveSwitch;
 
+    //listener
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -41,15 +42,18 @@ public class AddGameSituationDialog extends BottomSheetDialogFragment {
         }
     }
 
+    //vyvoření dialogu s layoutem
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.dialog_add_game_situation, container, false);
     }
 
+    //on Create
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        //odkazy
         editGameSituationName = view.findViewById(R.id.edit_game_situation_name);
         editGameSituationDescription = view.findViewById(R.id.edit_game_situation_description);
         beginnerSwitch = view.findViewById(R.id.beginner_switch);
@@ -61,6 +65,7 @@ public class AddGameSituationDialog extends BottomSheetDialogFragment {
         serveSwitch = view.findViewById(R.id.serve_switch);
         Button buttonSave = view.findViewById(R.id.button_save);
 
+        //při vybírání obtížnosti může být pravdivý pouze jeden switch
         beginnerSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,12 +90,16 @@ public class AddGameSituationDialog extends BottomSheetDialogFragment {
             }
         });
 
+        //tlačítko uložení
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 GameSituation gameSituation = new GameSituation();
+
+                //název cvičení
                 gameSituation.setName(editGameSituationName.getText().toString());
 
+                //obtížnost cvičení
                 String difficulty;
                 if (beginnerSwitch.isChecked()) {
                     difficulty = "začátečníci";
@@ -102,8 +111,11 @@ public class AddGameSituationDialog extends BottomSheetDialogFragment {
                     difficulty = "---";
                 }
                 gameSituation.setDifficulty(difficulty);
+
+                //popis cvičení
                 gameSituation.setDescription(editGameSituationDescription.getText().toString());
 
+                //zaměření cvičení
                 if (defenseSwitch.isChecked()) {
                     gameSituation.setDefense(true);
                 } else {
@@ -128,9 +140,11 @@ public class AddGameSituationDialog extends BottomSheetDialogFragment {
                     gameSituation.setServe(false);
                 }
 
+                //uložení do databáze
                 AppDatabase appDatabase = AppDatabase.getInstance(getActivity().getApplication());
                 appDatabase.getGameSituationDao().insert(gameSituation);
 
+                //listener odešle cvičení do fragmentu
                 listener.addGameSituation(gameSituation);
                 dismiss();
             }

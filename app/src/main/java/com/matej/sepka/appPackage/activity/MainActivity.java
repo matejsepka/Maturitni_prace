@@ -28,31 +28,36 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 public class MainActivity extends AppCompatActivity implements AddDialogListener {
+    //implementace proměnných
     private static final int PAGE_COUNT = 2;
-
     private ViewPager viewPager;
     private PagerAdapter pagerAdapter;
 
+    //onCreate metoda
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //další odkazy
         FloatingActionButton fab = findViewById(R.id.fab);
         viewPager = findViewById(R.id.view_pager);
         TabLayout tabLayout = findViewById(R.id.tab_layout);
 
+        //přidávání skupin a cvičení
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.v("current_item", String.valueOf(viewPager.getCurrentItem()));
                 switch (viewPager.getCurrentItem()) {
+                    //pokud viewpager je na první stránce pak přidáme skupinu
                     case 0:
                         AddGroupDialog addGroupDialog = new AddGroupDialog();
                         addGroupDialog.show(getSupportFragmentManager(), "add_group_dialog");
                         break;
+                    //pokud je viewpager na druhé stránce pak přidáme cvičení
                     case 1:
                         AddGameSituationDialog addGameSituationDialog = new AddGameSituationDialog();
                         addGameSituationDialog.show(getSupportFragmentManager(), "add_game_situation_dialog");
@@ -61,17 +66,20 @@ public class MainActivity extends AppCompatActivity implements AddDialogListener
             }
         });
 
+        //zavolání adaptéru
         pagerAdapter = new PagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager, true);
     }
 
+    //přiřazení menu ke stránce
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
+    //při kliknutí na jednotku v menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -82,33 +90,39 @@ public class MainActivity extends AppCompatActivity implements AddDialogListener
         return super.onOptionsItemSelected(item);
     }
 
+    //metoda pro načtení dialogu s nápovědou
     private void showAboutDialog() {
         AboutDialogMainActivity aboutDialog = new AboutDialogMainActivity();
         aboutDialog.show(getSupportFragmentManager(), "dialog_fragment_about");
     }
 
+    //přenášení nové skupiny z dialogu přes mainActivity do Fragmentu
     @Override
     public void addGroup(Group group) {
         GroupsFragment groupsFragment = (GroupsFragment) getCurrentFragment();
         groupsFragment.addGroup(group);
     }
 
+    //přenášení nového cvičení z dialogu přes mainActivity do Fragmentu
     @Override
     public void addGameSituation(GameSituation gameSituation) {
         GameSituationsFragment gameSituationsFragment = (GameSituationsFragment) getCurrentFragment();
         gameSituationsFragment.addGameSituation(gameSituation);
     }
 
+    //motoda vratí požadovaný fragment
     private Fragment getCurrentFragment() {
         return (Fragment) pagerAdapter.instantiateItem(viewPager, viewPager.getCurrentItem());
     }
 
+    //třída pager adaptéru
     private static class PagerAdapter extends FragmentPagerAdapter {
 
         PagerAdapter(@NonNull FragmentManager fm) {
             super(fm);
         }
 
+        //načítá fragment podle pozice
         @NonNull
         @Override
         public Fragment getItem(int position) {
@@ -119,11 +133,13 @@ public class MainActivity extends AppCompatActivity implements AddDialogListener
             }
         }
 
+        //určí na kolik fragmentu má adaptér stránku rozdělit
         @Override
         public int getCount() {
             return PAGE_COUNT;
         }
 
+        //určí názvy jednotlivých fragmentu
         @Nullable
         @Override
         public CharSequence getPageTitle(int position) {

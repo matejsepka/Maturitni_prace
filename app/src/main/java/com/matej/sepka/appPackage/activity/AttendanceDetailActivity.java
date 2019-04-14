@@ -26,22 +26,29 @@ import java.util.Date;
 import java.util.List;
 
 public class AttendanceDetailActivity extends AppCompatActivity {
+    //implementace proměnných
     private Training training;
     private AttendanceAdapter attendanceAdapter;
 
+    //metoda onCreate
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendance_detail);
 
+        //trénink
         training = (Training) getIntent().getExtras().getSerializable("training");
+        //recyclerview
         RecyclerView recyclerView = findViewById(R.id.attendance_player_recycler_view);
+        //datum tréninku v čitelném formátu nastaveno do názvu stránky
         Date date = new Date();
         date.setTime(training.getMillis() * 1000);
         SimpleDateFormat sdf = new SimpleDateFormat("E dd. MMM yyyy");
         setTitle(sdf.format(date));
+        //databáze
         AppDatabase appDatabase = AppDatabase.getInstance(getApplication());
 
+        //vyhledání docházky pro daný trénink
         List<Attendance> listAttendance = new ArrayList<>();
         List<Attendance> AllAttendanceList = appDatabase.getAttendanceDao().getAll();
         for (int i = 0; i < AllAttendanceList.size(); i++) {
@@ -51,17 +58,20 @@ public class AttendanceDetailActivity extends AppCompatActivity {
             }
         }
 
+        //adaptér pro vyplnění recyclerview
         attendanceAdapter = new AttendanceAdapter(listAttendance);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(attendanceAdapter);
     }
 
+    //načtení menu ke stránce
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
+    //při kliknutí na jednotku v menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -72,11 +82,13 @@ public class AttendanceDetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //metoda pro načtení dialogu s nápovědou
     private void showAboutDialog() {
         AboutDialogAttendanceDetailActivity aboutDialog = new AboutDialogAttendanceDetailActivity();
         aboutDialog.show(getSupportFragmentManager(), "dialog_fragment_about");
     }
 
+    //třída adaptéru recyclerview
     private class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.AttendanceViewHolder> {
         private List<Attendance> listAttendance;
 
@@ -99,6 +111,7 @@ public class AttendanceDetailActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull final AttendanceViewHolder holder, int position) {
             final Attendance attendance = listAttendance.get(position);
+            //vyjádření barev v integer formátu
             String green = "#4caf50";
             String red = "#F44336";
             String grey = "#303030";
@@ -106,6 +119,7 @@ public class AttendanceDetailActivity extends AppCompatActivity {
             final int redAsInt = Color.parseColor(red);
             final int greyAsInt = Color.parseColor(grey);
 
+            //nastavení barev k polí podle stavu docházky
             if (attendance.getPresent() == null) {
                 holder.itemView.setBackgroundColor(greyAsInt);
             } else if (attendance.getPresent().equals("yes")){
@@ -114,6 +128,7 @@ public class AttendanceDetailActivity extends AppCompatActivity {
                 holder.itemView.setBackgroundColor(redAsInt);
             }
             holder.textName.setText(attendance.getPlayerName());
+            //změna barvy a stavu docházky při kliknutí na pole
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

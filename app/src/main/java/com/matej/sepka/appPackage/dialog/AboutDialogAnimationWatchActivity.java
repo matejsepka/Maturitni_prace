@@ -13,11 +13,14 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 public class AboutDialogAnimationWatchActivity extends AppCompatDialogFragment {
 
+    //on Create dialog
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        //builder
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
+        //nastavení správného layoutu
         View view = View.inflate(getContext(), R.layout.dialog_about_animation_watch_activity, null);
 
         builder.setView(view)

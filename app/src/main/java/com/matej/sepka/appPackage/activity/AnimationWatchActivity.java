@@ -21,6 +21,8 @@ import com.matej.sepka.appPackage.dialog.AboutDialogAnimationWatchActivity;
 import java.util.List;
 
 public class AnimationWatchActivity extends AppCompatActivity {
+
+    //implementace proměnných
     private GameSituation gameSituation;
     private Animation animation;
     private ImageView imgPlayerOne;
@@ -29,20 +31,28 @@ public class AnimationWatchActivity extends AppCompatActivity {
     private ImageView imgPlayerFour;
     private ImageView imgBallOne;
 
+    //onCreate metoda
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animation_watch);
 
+        //cvičení
         gameSituation = (GameSituation) getIntent().getExtras().getSerializable("game_situation");
+        //název stránky1
+        setTitle("Animace ke cvičení " + gameSituation.getName());
+        //databáze
         final AppDatabase appDatabase = AppDatabase.getInstance(getApplication());
+        //tlačítko ke spuštění animace
         final Button startBtn = findViewById(R.id.startBtn);
+        //jednotlivé obrázky
         imgPlayerOne = findViewById(R.id.player_one_img);
         imgPlayerTwo = findViewById(R.id.player_two_img);
         imgPlayerThree = findViewById(R.id.player_three_img);
         imgPlayerFour = findViewById(R.id.player_four_img);
         imgBallOne = findViewById(R.id.ball_one_img);
 
+        //Vyhledání animace patřící k danému cvičení
         List<Animation> AllAnimationsList = appDatabase.getAnimationDao().getAll();
         for (int i = 0; i < AllAnimationsList.size(); i++) {
             Animation anim = AllAnimationsList.get(i);
@@ -51,47 +61,59 @@ public class AnimationWatchActivity extends AppCompatActivity {
             }
         }
 
+        //parametry pro obrázky
         RelativeLayout.LayoutParams layoutParamsPlayer = new RelativeLayout.LayoutParams(70, 70);
         RelativeLayout.LayoutParams layoutParamsBall = new RelativeLayout.LayoutParams(50, 50);
 
+        //Nastavení parametrů k obrázku prvního hráče
         imgPlayerOne.setLayoutParams(layoutParamsPlayer);
         imgPlayerOne.setX(animation.getPlayerOneX1());
         imgPlayerOne.setY(animation.getPlayerOneY1());
-        if (animation.getPlayerOneX1() == 50 && animation.getPlayerOneY1() == 1040) {
-            imgPlayerOne.setVisibility(View.INVISIBLE);
-        }
 
+        //Nastavení parametrů k obrázku druhého hráče
         imgPlayerTwo.setLayoutParams(layoutParamsPlayer);
         imgPlayerTwo.setX(animation.getPlayerTwoX1());
         imgPlayerTwo.setY(animation.getPlayerTwoY1());
-        if (animation.getPlayerTwoX1() == 150 && animation.getPlayerTwoY1() == 1040) {
-            imgPlayerTwo.setVisibility(View.INVISIBLE);
-        }
 
+
+        //Nastavení parametrů k obrázku třetího hráče
         imgPlayerThree.setLayoutParams(layoutParamsPlayer);
         imgPlayerThree.setX(animation.getPlayerThreeX1());
         imgPlayerThree.setY(animation.getPlayerThreeY1());
-        if (animation.getPlayerThreeX1() == 250 && animation.getPlayerThreeY1() == 1040) {
-            imgPlayerThree.setVisibility(View.INVISIBLE);
-        }
 
+        //Nastavení parametrů k obrázku čtvrtého hráče
         imgPlayerFour.setLayoutParams(layoutParamsPlayer);
         imgPlayerFour.setX(animation.getPlayerFourX1());
         imgPlayerFour.setY(animation.getPlayerFourY1());
-        if (animation.getPlayerFourX1() == 350 && animation.getPlayerFourY1() == 1040) {
-            imgPlayerFour.setVisibility(View.INVISIBLE);
-        }
 
+        //Nastavení parametrů k obrázku prvího balonu
         imgBallOne.setLayoutParams(layoutParamsBall);
         imgBallOne.setX(animation.getBallOneX1());
         imgBallOne.setY(animation.getBallOneY1());
+
+        //Pokud není obrázk použit bude uživateli neviditelný
+        if (animation.getPlayerOneX1() == 50 && animation.getPlayerOneY1() == 1040) {
+            imgPlayerOne.setVisibility(View.INVISIBLE);
+        }
+        if (animation.getPlayerTwoX1() == 150 && animation.getPlayerTwoY1() == 1040) {
+            imgPlayerTwo.setVisibility(View.INVISIBLE);
+        }
+        if (animation.getPlayerThreeX1() == 250 && animation.getPlayerThreeY1() == 1040) {
+            imgPlayerThree.setVisibility(View.INVISIBLE);
+        }
+        if (animation.getPlayerFourX1() == 350 && animation.getPlayerFourY1() == 1040) {
+            imgPlayerFour.setVisibility(View.INVISIBLE);
+        }
         if (animation.getBallOneX1() == 450 && animation.getBallOneY1() == 1050) {
             imgBallOne.setVisibility(View.INVISIBLE);
         }
 
+        //kliknutí na tlačítko pro spuštění animace
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //vrácení obrázků do úvodního posstavení
                 imgPlayerOne.setX(animation.getPlayerOneX1());
                 imgPlayerOne.setY(animation.getPlayerOneY1());
                 imgPlayerTwo.setX(animation.getPlayerTwoX1());
@@ -103,18 +125,21 @@ public class AnimationWatchActivity extends AppCompatActivity {
                 imgBallOne.setX(animation.getBallOneX1());
                 imgBallOne.setY(animation.getBallOneY1());
 
+                //odkaz na metodu pro přehrání animace
                 playAnimation();
             }
         });
 
     }
 
+    //přiřazení menu ke stránce
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
+    //při kliknutí na jednotku v menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -125,12 +150,16 @@ public class AnimationWatchActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //metoda pro načtení dialogu s nápovědou
     private void showAboutDialog() {
         AboutDialogAnimationWatchActivity aboutDialog = new AboutDialogAnimationWatchActivity();
         aboutDialog.show(getSupportFragmentManager(), "dialog_fragment_about");
     }
 
+    //metoda pro přehrání animace
     private void playAnimation() {
+
+        //animator set pro první krok animace
         AnimatorSet animatorSet1 = new AnimatorSet();
         ObjectAnimator PlayerOneY1 = new ObjectAnimator().ofFloat(imgPlayerOne,"translationY" , animation.getPlayerOneY2());
         ObjectAnimator PlayerOneX1 = new ObjectAnimator().ofFloat(imgPlayerOne,"translationX" , animation.getPlayerOneX2());
@@ -145,6 +174,7 @@ public class AnimationWatchActivity extends AppCompatActivity {
         animatorSet1.playTogether(PlayerOneX1,PlayerOneY1, PlayerTwoX1, PlayerTwoY1,PlayerThreeX1,PlayerThreeY1,PlayerFourX1,PlayerFourY1, BallOneX1, BallOneY1);
         animatorSet1.setDuration(2500);
 
+        //animator set pro druhý krok animace
         AnimatorSet animatorSet2 = new AnimatorSet();
         ObjectAnimator PlayerOneX2 = new ObjectAnimator().ofFloat(imgPlayerOne, "translationX", animation.getPlayerOneX3());
         ObjectAnimator PlayerOneY2 = new ObjectAnimator().ofFloat(imgPlayerOne, "translationY", animation.getPlayerOneY3());
@@ -159,6 +189,7 @@ public class AnimationWatchActivity extends AppCompatActivity {
         animatorSet2.playTogether(PlayerOneX2, PlayerOneY2, PlayerTwoX2, PlayerTwoY2, PlayerThreeX2, PlayerThreeY2, PlayerFourX2, PlayerFourY2, BallOneX2, BallOneY2);
         animatorSet2.setDuration(2500);
 
+        //animator set pro třetí krok animace
         AnimatorSet animatorSet3 = new AnimatorSet();
         ObjectAnimator PlayerOneX3 = new ObjectAnimator().ofFloat(imgPlayerOne, "translationX", animation.getPlayerOneX4());
         ObjectAnimator PlayerOneY3 = new ObjectAnimator().ofFloat(imgPlayerOne, "translationY", animation.getPlayerOneY4());
@@ -173,6 +204,7 @@ public class AnimationWatchActivity extends AppCompatActivity {
         animatorSet3.playTogether(PlayerOneX3, PlayerOneY3, PlayerTwoX3, PlayerTwoY3, PlayerThreeX3, PlayerThreeY3, PlayerFourX3, PlayerFourY3, BallOneX3, BallOneY3);
         animatorSet3.setDuration(2500);
 
+        //animator set pro čtvrtý krok animace
         AnimatorSet animatorSet4 = new AnimatorSet();
         ObjectAnimator PlayerOneX4 = new ObjectAnimator().ofFloat(imgPlayerOne, "translationX", animation.getPlayerOneX5());
         ObjectAnimator PlayerOneY4 = new ObjectAnimator().ofFloat(imgPlayerOne, "translationY", animation.getPlayerOneY5());
@@ -187,6 +219,7 @@ public class AnimationWatchActivity extends AppCompatActivity {
         animatorSet4.playTogether(PlayerOneX4, PlayerOneY4, PlayerTwoX4, PlayerTwoY4, PlayerThreeX4, PlayerThreeY4, PlayerFourX4, PlayerFourY4, BallOneX4, BallOneY4);
         animatorSet4.setDuration(2500);
 
+        //animator set pro pátý krok animace
         AnimatorSet animatorSet5 = new AnimatorSet();
         ObjectAnimator PlayerOneX5 = new ObjectAnimator().ofFloat(imgPlayerOne, "translationX", animation.getPlayerOneX6());
         ObjectAnimator PlayerOneY5 = new ObjectAnimator().ofFloat(imgPlayerOne, "translationY", animation.getPlayerOneY6());
@@ -201,6 +234,7 @@ public class AnimationWatchActivity extends AppCompatActivity {
         animatorSet5.playTogether(PlayerOneX5, PlayerOneY5, PlayerTwoX5, PlayerTwoY5, PlayerThreeX5, PlayerThreeY5, PlayerFourX5, PlayerFourY5, BallOneX5, BallOneY5);
         animatorSet5.setDuration(2500);
 
+        //animator set pro šestý krok animace
         AnimatorSet animatorSet6 = new AnimatorSet();
         ObjectAnimator PlayerOneX6 = new ObjectAnimator().ofFloat(imgPlayerOne, "translationX", animation.getPlayerOneX7());
         ObjectAnimator PlayerOneY6 = new ObjectAnimator().ofFloat(imgPlayerOne, "translationY", animation.getPlayerOneY7());
@@ -215,6 +249,7 @@ public class AnimationWatchActivity extends AppCompatActivity {
         animatorSet6.playTogether(PlayerOneX6, PlayerOneY6, PlayerTwoX6, PlayerTwoY6, PlayerThreeX6, PlayerThreeY6, PlayerFourX6, PlayerFourY6, BallOneX6, BallOneY6);
         animatorSet6.setDuration(2500);
 
+        //animator set pro sedmý krok animace
         AnimatorSet animatorSet7 = new AnimatorSet();
         ObjectAnimator PlayerOneX7 = new ObjectAnimator().ofFloat(imgPlayerOne, "translationX", animation.getPlayerOneX8());
         ObjectAnimator PlayerOneY7 = new ObjectAnimator().ofFloat(imgPlayerOne, "translationY", animation.getPlayerOneY8());
@@ -229,6 +264,7 @@ public class AnimationWatchActivity extends AppCompatActivity {
         animatorSet7.playTogether(PlayerOneX7, PlayerOneY7, PlayerTwoX7, PlayerTwoY7, PlayerThreeX7, PlayerThreeY7, PlayerFourX7, PlayerFourY7, BallOneX7, BallOneY7);
         animatorSet7.setDuration(2500);
 
+        //animator set pro osmý krok animace
         AnimatorSet animatorSet8 = new AnimatorSet();
         ObjectAnimator PlayerOneX8 = new ObjectAnimator().ofFloat(imgPlayerOne, "translationX", animation.getPlayerOneX9());
         ObjectAnimator PlayerOneY8 = new ObjectAnimator().ofFloat(imgPlayerOne, "translationY", animation.getPlayerOneY9());
@@ -243,6 +279,7 @@ public class AnimationWatchActivity extends AppCompatActivity {
         animatorSet8.playTogether(PlayerOneX8, PlayerOneY8, PlayerTwoX8, PlayerTwoY8, PlayerThreeX8, PlayerThreeY8, PlayerFourX8, PlayerFourY8, BallOneX8, BallOneY8);
         animatorSet8.setDuration(2500);
 
+        //animator set pro devátý krok animace
         AnimatorSet animatorSet9 = new AnimatorSet();
         ObjectAnimator PlayerOneX9 = new ObjectAnimator().ofFloat(imgPlayerOne, "translationX", animation.getPlayerOneX10());
         ObjectAnimator PlayerOneY9 = new ObjectAnimator().ofFloat(imgPlayerOne, "translationY", animation.getPlayerOneY10());
@@ -257,19 +294,24 @@ public class AnimationWatchActivity extends AppCompatActivity {
         animatorSet9.playTogether(PlayerOneX9, PlayerOneY9, PlayerTwoX9, PlayerTwoY9, PlayerThreeX9, PlayerThreeY9, PlayerFourX9, PlayerFourY9, BallOneX9, BallOneY9);
         animatorSet9.setDuration(2500);
 
+        //spojení všech animator setů dohromady
+        //animace má dva obrzky
         if (animation.getPlayerOneX3() == 0) {
             animatorSet1.start();
         } else if (animation.getPlayerOneX4() == 0) {
+            //animace má tři obrázky
             AnimatorSet animatorSet = new AnimatorSet();
             animatorSet.play(animatorSet1).before(animatorSet2);
             animatorSet.start();
         } else if (animation.getPlayerOneX5() == 0) {
+            //animace má čtyři obrázky
             AnimatorSet animatorSetA = new AnimatorSet();
             animatorSetA.play(animatorSet1).before(animatorSet2);
             AnimatorSet animatorSetB = new AnimatorSet();
             animatorSetB.play(animatorSetA).before(animatorSet3);
             animatorSetB.start();
         } else if (animation.getPlayerOneX6() == 0) {
+            //animce má pět obrázků
             AnimatorSet animatorSetA = new AnimatorSet();
             animatorSetA.play(animatorSet1).before(animatorSet2);
             AnimatorSet animatorSetB = new AnimatorSet();
@@ -278,6 +320,7 @@ public class AnimationWatchActivity extends AppCompatActivity {
             animatorSetC.play(animatorSetA).before(animatorSetB);
             animatorSetC.start();
         } else if (animation.getPlayerOneX7() == 0) {
+            //animace má šest obrázků
             AnimatorSet animatorSetA = new AnimatorSet();
             animatorSetA.play(animatorSet1).before(animatorSet2);
             AnimatorSet animatorSetB = new AnimatorSet();
@@ -288,6 +331,7 @@ public class AnimationWatchActivity extends AppCompatActivity {
             animatorSetD.play(animatorSetC).before(animatorSet5);
             animatorSetD.start();
         } else if (animation.getPlayerOneX8() == 0) {
+            //animace má sedm obrázků
             AnimatorSet animatorSetA = new AnimatorSet();
             animatorSetA.play(animatorSet1).before(animatorSet2);
             AnimatorSet animatorSetB = new AnimatorSet();
@@ -300,6 +344,7 @@ public class AnimationWatchActivity extends AppCompatActivity {
             animatorSetE.play(animatorSetD).before(animatorSetC);
             animatorSetE.start();
         } else if (animation.getPlayerOneX9() == 0) {
+            //animace má osm obráků
             AnimatorSet animatorSetA = new AnimatorSet();
             animatorSetA.play(animatorSet1).before(animatorSet2);
             AnimatorSet animatorSetB = new AnimatorSet();
@@ -314,6 +359,7 @@ public class AnimationWatchActivity extends AppCompatActivity {
             animatorSetF.play(animatorSetD).before(animatorSetE);
             animatorSetF.start();
         } else if (animation.getPlayerOneX10() == 0) {
+            //animace má devět obráků
             AnimatorSet animatorSetA = new AnimatorSet();
             animatorSetA.play(animatorSet1).before(animatorSet2);
             AnimatorSet animatorSetB = new AnimatorSet();
@@ -330,6 +376,7 @@ public class AnimationWatchActivity extends AppCompatActivity {
             animatorSetG.play(animatorSetE).before(animatorSetF);
             animatorSetG.start();
         } else {
+            //animace má deset obrázků
             AnimatorSet animatorSetA = new AnimatorSet();
             animatorSetA.play(animatorSet1).before(animatorSet2);
             AnimatorSet animatorSetB = new AnimatorSet();

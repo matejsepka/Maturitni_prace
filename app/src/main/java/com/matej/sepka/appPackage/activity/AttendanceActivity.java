@@ -27,19 +27,25 @@ import java.util.Date;
 import java.util.List;
 
 public class AttendanceActivity extends AppCompatActivity {
+    //implementace proměnných
     private Group group;
     private TrainingsAdapter trainingsAdapter;
 
+    //onCreate metoda
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendance);
 
+        //skupina
         group = (Group) getIntent().getExtras().getSerializable("group");
+        //název stránky
         setTitle("Docházka skupiny " + group.getName());
+        //recyclerview a databáze
         RecyclerView recyclerView = findViewById(R.id.attendance_recycler_view);
         AppDatabase appDatabase = AppDatabase.getInstance(getApplication());
 
+        //vyhledání pouze tréninků náležících pod danou skupinu
         List<Training> AllTrainingsList = appDatabase.getTrainingDao().getall();
         List<Training> listTrainings = new ArrayList<>();
         for (int i = 0; i < AllTrainingsList.size(); i++) {
@@ -49,21 +55,23 @@ public class AttendanceActivity extends AppCompatActivity {
             }
         }
 
+        //seřazní tréninků
         Collections.sort(listTrainings, Training.TraMilComparator);
 
         //Spuštění adaptéru pro vyplnění ryclerview
-
         trainingsAdapter = new TrainingsAdapter(listTrainings);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(trainingsAdapter);
     }
 
+    //přiřazení menu ke stránce
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
+    //při kliknutí na jednotku v menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -74,11 +82,13 @@ public class AttendanceActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //metoda pro načtení dialogu s nápovědou
     private void showAboutDialog() {
         AboutDialogAttendanceActivity aboutDialog = new AboutDialogAttendanceActivity();
         aboutDialog.show(getSupportFragmentManager(), "dialog_fragment_about");
     }
 
+    //třída adaptéru recyclerview
     private class TrainingsAdapter extends RecyclerView.Adapter<TrainingsAdapter.TrainingsViewHolder> {
         private List<Training> listTrainings;
 

@@ -25,13 +25,16 @@ import java.util.Date;
 import java.util.List;
 
 public class PlayerDetailActivity extends AppCompatActivity {
+    //implementace proměnných
     private Player player;
     private DatePickerDialog.OnDateSetListener onDateSetListener;
     private TextView textDOB;
 
+    //metoda po opětovném vstupu na stránku
     @Override
     protected void onResume() {
         super.onResume();
+        //datum narození narození
         if (player.getDateOfBirth() != 0) {
             Date date = new Date();
             date.setTime(player.getDateOfBirth() * 1000);
@@ -40,13 +43,17 @@ public class PlayerDetailActivity extends AppCompatActivity {
         }
     }
 
+    //onCreate metoda
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_detail);
 
+        //hráč
         player = (Player) getIntent().getExtras().getSerializable("player");
+        //název stránky
         setTitle(player.getName());
+        //odkazy a pomocné proměnné
         TextView textName = findViewById(R.id.text_name);
         textDOB = findViewById(R.id.text_date_of_birth);
         TextView textPresent = findViewById(R.id.text_present);
@@ -57,6 +64,7 @@ public class PlayerDetailActivity extends AppCompatActivity {
         String training1 = " trenincích";
         String training2 = " trenincích";
 
+        //vyhledání docházky k danému hráči
         List<Attendance> listAttendance = new ArrayList<>();
         List<Attendance> AllAttendanceList = appDatabase.getAttendanceDao().getAll();
         for (int i = 0; i < AllAttendanceList.size(); i++) {
@@ -66,6 +74,7 @@ public class PlayerDetailActivity extends AppCompatActivity {
             }
         }
 
+        //počet přítomných a nepřítomných hodin
         for (int i = 0; i < listAttendance.size(); i++) {
             Attendance attendance = listAttendance.get(i);
             if (attendance.getPresent() == null) {
@@ -76,6 +85,7 @@ public class PlayerDetailActivity extends AppCompatActivity {
             }
         }
 
+        //nasstavení docházky do textview
         textName.setText(player.getName());
         if (present == 1) {
             training1 = " tréninku";
@@ -88,10 +98,12 @@ public class PlayerDetailActivity extends AppCompatActivity {
         textPresent.setText(presentText);
         textAbsent.setText(absentText);
 
+
         if (player.getDateOfBirth() == 0) {
             textDOB.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    //pokud hráč nemá přiřazené datum narození pak umožníme jeho přidání pomocí datePickerDialogu
                     Calendar calendar = Calendar.getInstance();
                     int year = calendar.get(Calendar.YEAR);
                     int month = calendar.get(Calendar.MONTH);
@@ -103,12 +115,15 @@ public class PlayerDetailActivity extends AppCompatActivity {
                 }
             });
         } else {
+            //pokud datum narození již má pouze ho načteme do textview
             Date date = new Date();
             date.setTime(player.getDateOfBirth() * 1000);
             SimpleDateFormat sdf = new SimpleDateFormat("dd. MMM yyyy");
             textDOB.setText(sdf.format(date));
         }
 
+
+        //Datepicker dialog a jeho přepis do textview
         onDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -126,12 +141,14 @@ public class PlayerDetailActivity extends AppCompatActivity {
         };
     }
 
+    //přiřazení menu ke stránce
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
+    //při kliknutí na jednotku v menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -142,6 +159,7 @@ public class PlayerDetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //metoda pro načtení dialogu s nápovědou
     private void showAboutDialog() {
         AboutDialogPlayerDetailActivity aboutDialog = new AboutDialogPlayerDetailActivity();
         aboutDialog.show(getSupportFragmentManager(), "dialog_fragment_about");

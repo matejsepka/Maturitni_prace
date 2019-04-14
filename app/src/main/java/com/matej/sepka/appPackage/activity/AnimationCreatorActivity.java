@@ -19,12 +19,16 @@ import com.matej.sepka.appPackage.database.GameSituation;
 import com.matej.sepka.appPackage.dialog.AboutDialogAnimationCreatorActivity;
 
 public class AnimationCreatorActivity extends AppCompatActivity {
+
+    //implementace proměnných
     private GameSituation gameSituation;
     private int _xDelta;
     private int _yDelta;
 
+    //počet vytvořených obrázků
     private int frameCount = 0;
 
+    //proměnné pro obrázek prvního hráče
     private float playerOneX1 = 0;
     private float playerOneY1 = 0;
     private float playerOneX2 = 0;
@@ -46,6 +50,7 @@ public class AnimationCreatorActivity extends AppCompatActivity {
     private float playerOneX10 = 0;
     private float playerOneY10 = 0;
 
+    //proměnné pro obrázek druhého hráče
     private float playerTwoX1 = 0;
     private float playerTwoY1 = 0;
     private float playerTwoX2 = 0;
@@ -67,6 +72,7 @@ public class AnimationCreatorActivity extends AppCompatActivity {
     private float playerTwoX10 = 0;
     private float playerTwoY10 = 0;
 
+    //proměnné pro obrázek třetího hráče
     private float playerThreeX1 = 0;
     private float playerThreeY1 = 0;
     private float playerThreeX2 = 0;
@@ -88,6 +94,7 @@ public class AnimationCreatorActivity extends AppCompatActivity {
     private float playerThreeX10 = 0;
     private float playerThreeY10 = 0;
 
+    //proměnné pro obrázek čtvrtého hráče
     private float playerFourX1 = 0;
     private float playerFourY1 = 0;
     private float playerFourX2 = 0;
@@ -109,6 +116,7 @@ public class AnimationCreatorActivity extends AppCompatActivity {
     private float playerFourX10 = 0;
     private float playerFourY10 = 0;
 
+    //proměnné pro obrázek prvního balonu
     private float ballOneX1 = 0;
     private float ballOneY1 = 0;
     private float ballOneX2 = 0;
@@ -131,55 +139,66 @@ public class AnimationCreatorActivity extends AppCompatActivity {
     private float ballOneY10 = 0;
 
 
-
+    //onCreate metoda
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animation_creator);
 
+        //cvičení
         gameSituation = (GameSituation) getIntent().getExtras().getSerializable("game_situation");
-        setTitle("Animace ke cvičení" + gameSituation.getName());
+        //název stránky
+        setTitle("Animace ke cvičení " + gameSituation.getName());
+        //jednotlivé obrázky
         final ImageView imagePlayerOne = findViewById(R.id.player_one_img);
         final ImageView imagePlayerTwo = findViewById(R.id.player_two_img);
         final ImageView imageBallOne = findViewById(R.id.ball_one_img);
         final ImageView imagePlayerThree = findViewById(R.id.player_three_img);
         final ImageView imagePlayerFour = findViewById(R.id.player_four_img);
+        //tlačítka pro ukládání
         Button nextFrameBtn = findViewById(R.id.next_frame_btn);
         Button saveBtn = findViewById(R.id.save_btn);
 
+        //Nastavení parametrů k obrázku prvního hráče + odkaz na metodu pro posouvání obrázku
         RelativeLayout.LayoutParams layoutParams1 = new RelativeLayout.LayoutParams(70, 70);
         imagePlayerOne.setLayoutParams(layoutParams1);
         imagePlayerOne.setX(50);
         imagePlayerOne.setY(1040);
         imagePlayerOne.setOnTouchListener(new PlayerOneTouchListener());
 
+        //Nastavení parametrů k obrázku druhého hráče + odkaz na metodu pro posouvání obrázku
         RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams(70, 70);
         imagePlayerTwo.setLayoutParams(layoutParams2);
         imagePlayerTwo.setX(150);
         imagePlayerTwo.setY(1040);
         imagePlayerTwo.setOnTouchListener(new PlayerTwoTouchListener());
 
+        //Nastavení parametrů k obrázku prvního balonu + odkaz na metodu pro posouvání obrázku
         RelativeLayout.LayoutParams layoutParams3 = new RelativeLayout.LayoutParams(50 , 50);
         imageBallOne.setLayoutParams(layoutParams3);
         imageBallOne.setX(450);
         imageBallOne.setY(1050);
         imageBallOne.setOnTouchListener(new BallOneTouchListener());
 
+        //Nastavení parametrů k obrázku třetího hráče + odkaz na metodu pro posouvání obrázku
         RelativeLayout.LayoutParams layoutParams4 = new RelativeLayout.LayoutParams(70, 70);
         imagePlayerThree.setLayoutParams(layoutParams4);
         imagePlayerThree.setX(250);
         imagePlayerThree.setY(1040);
         imagePlayerThree.setOnTouchListener(new PlayerThreeTouchListener());
 
+        //Nastavení parametrů k obrázku čtvrtého hráče + odkaz na metodu pro posouvání obrázku
         RelativeLayout.LayoutParams layoutParams5 = new RelativeLayout.LayoutParams(70, 70);
         imagePlayerFour.setLayoutParams(layoutParams5);
         imagePlayerFour.setX(350);
         imagePlayerFour.setY(1040);
         imagePlayerFour.setOnTouchListener(new PlayerFourTouchListener());
 
+        //při kliknutí na tlačítko pro uložení nového obrázku
         nextFrameBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //podle počtů již vytvořených obrázků odlišíme do jaké proměnné se má uložit aktuální pozice obrázku
                 switch (frameCount) {
                     case 10:
                         Toast.makeText(getApplicationContext(),"Již máte maximální počet obrázků v animaci! Klikněte na tlačítko pro uložení.", Toast.LENGTH_LONG).show();
@@ -321,6 +340,7 @@ public class AnimationCreatorActivity extends AppCompatActivity {
                         playerFourY1 = imagePlayerFour.getY();
                         ballOneX1 = imageBallOne.getX();
                         ballOneY1 = imageBallOne.getY();
+                        //Pokud nebyly obrázky při prvním snímku použity stanou se uživateli neviditelnými
                         if (playerOneX1 == 50 && playerOneY1 == 1040) {
                             imagePlayerOne.setVisibility(View.INVISIBLE);
                         }
@@ -343,11 +363,12 @@ public class AnimationCreatorActivity extends AppCompatActivity {
             }
         });
 
+        //při kliknutí na tlačítko pro uložení celé animace
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (frameCount < 2) {
-                    Toast.makeText(getApplicationContext(),"Před uložením animace musíte nejprve vytvořit alespoň dva snímky!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Před uložením animace musíte nejprve vytvořit nejméně dva snímky!", Toast.LENGTH_LONG).show();
                 } else {
                     saveAnimation();
                     Toast.makeText(getApplicationContext(),"Animace byla uložena.", Toast.LENGTH_LONG).show();
@@ -358,6 +379,7 @@ public class AnimationCreatorActivity extends AppCompatActivity {
 
     }
 
+    //metoda pro vytvoření nové animace, nastavení jejích parametrů a její uložení do databáze
     private void saveAnimation() {
         AppDatabase appDatabase = AppDatabase.getInstance(getApplication());
         Animation animation = new Animation();
@@ -470,12 +492,14 @@ public class AnimationCreatorActivity extends AppCompatActivity {
         appDatabase.getAnimationDao().insert(animation);
     }
 
+    //přiřazení menu ke stránce
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
+    //při kliknutí na jednotku v menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -486,12 +510,13 @@ public class AnimationCreatorActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //metoda pro načtení dialogu s nápovědou
     private void showAboutDialog() {
         AboutDialogAnimationCreatorActivity aboutDialog = new AboutDialogAnimationCreatorActivity();
         aboutDialog.show(getSupportFragmentManager(), "dialog_fragment_about");
     }
 
-
+    //třída pro pohyb s obrázkem prvního hráče
     private final class PlayerOneTouchListener implements View.OnTouchListener {
         public boolean onTouch(View view, MotionEvent event) {
             final int X = (int) event.getRawX();
@@ -519,6 +544,7 @@ public class AnimationCreatorActivity extends AppCompatActivity {
         }
     }
 
+    //třída pro pohyb s obrázkem druhého hráče
     private final class PlayerTwoTouchListener implements View.OnTouchListener {
         public boolean onTouch(View view, MotionEvent event) {
             final int X = (int) event.getRawX();
@@ -546,6 +572,7 @@ public class AnimationCreatorActivity extends AppCompatActivity {
         }
     }
 
+    //třída pro pohyb s obrázkem třetího hráče
     private final class PlayerThreeTouchListener implements View.OnTouchListener {
         public boolean onTouch(View view, MotionEvent event) {
             final int X = (int) event.getRawX();
@@ -573,6 +600,7 @@ public class AnimationCreatorActivity extends AppCompatActivity {
         }
     }
 
+    //třída pro pohyb s obrázkem čtvrtého hráče
     private final class PlayerFourTouchListener implements View.OnTouchListener {
         public boolean onTouch(View view, MotionEvent event) {
             final int X = (int) event.getRawX();
@@ -600,6 +628,7 @@ public class AnimationCreatorActivity extends AppCompatActivity {
         }
     }
 
+    //třída pro pohyb s obrázkem prvního balonu
     private final class BallOneTouchListener implements View.OnTouchListener {
         public boolean onTouch(View view, MotionEvent event) {
             final int X = (int) event.getRawX();

@@ -18,12 +18,15 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 public class DeleteGameSituationDialog extends AppCompatDialogFragment {
 
+    //on Create
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        //cvičení
         final GameSituation gameSituation = (GameSituation) getArguments().getSerializable("game_situation");
+        //builder
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
+        //layout
         View view = View.inflate(getContext(), R.layout.dialog_delete_game_situation, null);
 
         builder.setView(view)
@@ -36,6 +39,7 @@ public class DeleteGameSituationDialog extends AppCompatDialogFragment {
                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        //smazání cvičení a jeho animace z databáze
                         AppDatabase appDatabase = AppDatabase.getInstance(getActivity().getApplication());
 
                         List<Animation> AllAnimationsList = appDatabase.getAnimationDao().getAll();

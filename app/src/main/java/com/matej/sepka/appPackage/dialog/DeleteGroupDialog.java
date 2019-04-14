@@ -20,12 +20,15 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 public class DeleteGroupDialog extends AppCompatDialogFragment {
 
+    //on Create
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        //skupina
         final Group group = (Group) getArguments().getSerializable("group");
+        //builder
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
+        //layout
         View view = View.inflate(getContext(), R.layout.dialog_delete_group, null);
 
         builder.setView(view)
@@ -38,6 +41,7 @@ public class DeleteGroupDialog extends AppCompatDialogFragment {
                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        //smazání skupiny a do ní patřících hráčů, tréninků a docházky t databáze
                         AppDatabase appDatabase = AppDatabase.getInstance(getActivity().getApplication());
                         List<Player> AllPlayersList = appDatabase.getPlayerDao().getall();
                         List<Training> AllTrainingsList = appDatabase.getTrainingDao().getall();

@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 public class DeletePlayerDialog extends AppCompatDialogFragment {
     private PlayerDialogListener listener;
 
+    //listner
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -34,11 +35,15 @@ public class DeletePlayerDialog extends AppCompatDialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        //hráč
         final Player player = (Player) getArguments().getSerializable("player");
 
+        //builder
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
+        //layout
         View view = View.inflate(getContext(), R.layout.dialog_delete_player, null);
+        //odkazy
         TextView playerNameText = view.findViewById(R.id.text_delete_player);
         playerNameText.setText(player.getName());
 
@@ -52,6 +57,7 @@ public class DeletePlayerDialog extends AppCompatDialogFragment {
                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        //smazání hráče a jeho docházky z databáze
                         AppDatabase appDatabase = AppDatabase.getInstance(getActivity().getApplication());
                         appDatabase.getPlayerDao().delete(player);
 
@@ -63,6 +69,7 @@ public class DeletePlayerDialog extends AppCompatDialogFragment {
                             }
                         }
 
+                        //listener smaže hráče z GroupDetailActivity
                         listener.deletePlayer(player);
                         dismiss();
                     }

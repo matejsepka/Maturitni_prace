@@ -29,13 +29,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GroupDetailActivity extends AppCompatActivity implements PlayerDialogListener {
-
+    //implementace proměnných
     private Group group;
     private PlayersAdapter playersAdapter;
 
+    //metoda po opětovném vstupu na stránku
     @Override
     protected void onResume() {
         super.onResume();
+        //vyhledání všech hráčů patřících doskupiny
         AppDatabase appDatabase = AppDatabase.getInstance(getApplication());
         RecyclerView recyclerView = findViewById(R.id.player_recycler_view);
         List<Player> AllPlayersList = appDatabase.getPlayerDao().getall();
@@ -46,11 +48,13 @@ public class GroupDetailActivity extends AppCompatActivity implements PlayerDial
                 listPlayers.add(player);
             }
         }
+        //zavolání adaptéru
         playersAdapter = new PlayersAdapter(listPlayers);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(playersAdapter);
     }
 
+    //onCreate metoda
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -200,6 +204,7 @@ public class GroupDetailActivity extends AppCompatActivity implements PlayerDial
         public void onBindViewHolder(@NonNull PlayersViewHolder holder, int position) {
             final Player player = listPlayers.get(position);
             holder.textName.setText(player.getName());
+            //krátké kliknutí otevře detailní stránku hráče
             holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
@@ -211,6 +216,7 @@ public class GroupDetailActivity extends AppCompatActivity implements PlayerDial
                     return false;
                 }
             });
+            //dlouhé kliknutí otevře dialog pro smazání hráče
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
